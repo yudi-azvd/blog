@@ -1,8 +1,15 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 
-const Home: NextPage = () => {
+import { getSortedPosts } from '../lib/posts'
+import styles from '../styles/Home.module.css'
+import Post from '../types/post'
+
+interface Props {
+  allPosts: Post[];
+}
+
+const Home: NextPage<Props> = ({ allPosts }: Props) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -15,9 +22,37 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Em construção
         </h1>
+
+        <h2>
+          Posts
+        </h2>
+
+        <ul>
+          {allPosts.map(post => (
+            <li key={post.title} >
+              <p> {post.title} </p>
+              {post.tags ? (
+                <small>
+                  {post.tags.join(', ')}
+                </small>
+              ) : 
+                <></>
+              }
+            </li>
+          ))}
+        </ul>
       </main>
     </div>
   )
 }
 
 export default Home
+
+export const getStaticProps = async () => {
+  const allPosts = getSortedPosts()
+  return {
+    props: {
+      allPosts
+    }
+  }
+}
