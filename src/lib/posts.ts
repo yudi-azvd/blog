@@ -2,7 +2,7 @@ import path from 'path'
 import fs from 'fs'
 import matter from 'gray-matter'
 
-import Post from '../src/types/post'
+import Post from '../types/post'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
