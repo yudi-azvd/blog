@@ -1,12 +1,13 @@
 ---
 tags: ['game-dev', 'project']
 date: '2021-05-08'
-title: 'Bed Time Calulator'
+title: 'Bed Time Caculator'
+excerpt: 'Uma ideia de PWA pra descorbrir o melhor horário de dormir e acordar'
 ---
 
 ## Descrição
 
-Calcula horários ideais pra dormir dado um horário de acordar baseado no ciclo 
+Calcula horários ideais pra dormir dado um horário de acordar baseado no ciclo
 de sono de 90 minutos.
 
 ## Funcionalidades / requisitos

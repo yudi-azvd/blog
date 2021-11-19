@@ -4,7 +4,7 @@ interface Post {
   title: string
   date: string
   excerpt?: string
-  content?: string
+  content: string
 }
 
 export default Post

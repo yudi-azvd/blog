@@ -1,6 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import matter from 'gray-matter'
+import { marked } from 'marked'
 
 import Post from '../types/post'
 
@@ -25,7 +26,6 @@ export function getSortedPosts(): Post[] {
   })
 
   return allPosts.sort(({ date: a }, { date: b }) => {
-    console.log(a, typeof a)
     if (a < b) {
       return 1
     } else if (a > b) {
@@ -34,4 +34,29 @@ export function getSortedPosts(): Post[] {
       return 0
     }
   })
+}
+
+export function getAllPostsIds() {
+  const filenames = fs.readdirSync(postsDirectory)
+
+  return filenames.map((filename) => {
+    return {
+      params: {
+        id: filename.replace(/\.md$/, ''),
+      },
+    }
+  })
+}
+
+export async function getPost(id: string): Promise<Post> {
+  const fullpath = path.join(postsDirectory, `${id}.md`)
+  const filecontent = fs.readFileSync(fullpath, 'utf8')
+  const matterResult = matter(filecontent)
+  const contentHtml = marked(matterResult.content)
+
+  return {
+    id,
+    content: contentHtml,
+    ...matterResult.data,
+  } as Post
 }

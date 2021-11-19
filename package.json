@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@stitches/react": "^1.2.5",
+    "@types/marked": "^4.0.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.22.1",
