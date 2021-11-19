@@ -3,6 +3,7 @@ interface Post {
   tags: [string]
   title: string
   date: string
+  dateFormatted?: string
   excerpt?: string
   content: string
 }

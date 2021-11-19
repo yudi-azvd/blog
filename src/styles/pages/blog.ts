@@ -1,41 +1,47 @@
-import { styled } from '../stitches.config'
+import styled from 'styled-components'
 
-export const Container = styled('div', {
-  height: '100vh',
-  width: '100vw',
-  display: 'flex',
-  flexDirection: 'column',
-})
+export const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+`
 
-export const Content = styled('main', {
-  margin: '64px',
-  display: 'flex',
-  flexDirection: 'column',
+export const Content = styled.main`
+  margin: 8% auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
 
-  '& h1': {
-    marginBottom: '32px',
-  },
-})
+  h1 {
+    margin-bottom: 32px;
+  }
+`
 
-export const PostItem = styled('li', {
-  marginBottom: '32px',
-  listStyle: 'none',
+export const PostItem = styled.li`
+  margin-bottom: 32px;
+  list-style: none;
 
-  '& h2': {
-    marginBottom: '4px',
-  },
+  h2 {
+    margin-bottom: 4px;
+  }
 
-  '& p': {
-    marginBottom: '4px',
-  },
-})
+  p {
+    margin-bottom: 4px;
+  }
+`
 
-export const PostMeta = styled('div', {
-  color: 'GrayText',
-  display: 'flex',
-  alignItems: 'center',
+export const PostMeta = styled.div`
+  color: grey;
+  display: flex;
+  align-items: center;
 
-  '& small.date': {
-    marginRight: '4px',
-  },
-})
+  time,
+  small {
+    font-size: 0.8em;
+  }
+
+  time {
+    margin-right: 4px;
+  }
+`

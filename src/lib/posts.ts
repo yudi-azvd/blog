@@ -1,7 +1,12 @@
 import path from 'path'
 import fs from 'fs'
+
 import matter from 'gray-matter'
 import { marked } from 'marked'
+
+import rehypeHighlight from 'rehype-highlight'
+import { remark } from 'remark'
+import remarkHtml from 'remark-html'
 
 import Post from '../types/post'
 
@@ -52,8 +57,14 @@ export async function getPost(id: string): Promise<Post> {
   const fullpath = path.join(postsDirectory, `${id}.md`)
   const filecontent = fs.readFileSync(fullpath, 'utf8')
   const matterResult = matter(filecontent)
-  const contentHtml = marked(matterResult.content)
 
+  // const processedContent = await remark()
+  //   .use(remarkHtml)
+  //   .use(rehypeHighlight)
+  //   .process(matterResult.content)
+  // const contentHtml = processedContent.toString()
+
+  const contentHtml = marked(matterResult.content)
   return {
     id,
     content: contentHtml,

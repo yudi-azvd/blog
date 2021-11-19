@@ -1,10 +1,18 @@
 import type { AppProps } from 'next/app'
 
-import { globalStyles } from '../styles/global'
+import GlobalStyle from '../styles/global'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  globalStyles()
-  return <Component {...pageProps} />
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <GlobalStyle />
+      {/* Theme Provider: aula da rocketseat */}
+      {/* https://youtu.be/1nVUfZg2dSA?t=1368 */}
+      {/* ThemeProvider */}
+      <Component {...pageProps} />
+      {/* ThemeProvider */}
+    </>
+  )
 }
 
-export default MyApp
+export default App

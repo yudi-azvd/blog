@@ -1,10 +1,15 @@
 import { GetStaticPaths } from 'next'
 import Head from 'next/head'
 
-import { getAllPostsIds, getPost } from '../../../lib/posts'
 import Link from '../../../components/Link'
-import { Container, MarkdownContent } from '../../../styles/pages/post'
+import {
+  Container,
+  MarkdownContent,
+  PostDetails,
+} from '../../../styles/pages/post'
+
 import Post from '../../../types/post'
+import { getAllPostsIds, getPost } from '../../../lib/posts'
 
 interface Params {
   params: {
@@ -43,6 +48,11 @@ export default function PostPage({ post }: PostProps) {
       <Container>
         <MarkdownContent>
           <h1> {post.title} </h1>
+          <PostDetails>
+            <time> {post.date} </time>
+            {post.tags ? <small> | {post.tags.join(', ')}</small> : <></>}
+          </PostDetails>
+
           <div dangerouslySetInnerHTML={{ __html: post.content }} />
 
           <Link href="/blog">

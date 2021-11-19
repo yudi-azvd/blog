@@ -23,19 +23,22 @@ const Blog: NextPage<Props> = ({ allPosts }: Props) => {
       <Container>
         <Content>
           <h1>Posts</h1>
-          <small>posts temporários, apenas para teste xD </small>
+
+          <small>
+            posts temporários, apenas para teste. O último nem é meu xD
+          </small>
           <br />
           <ul>
             {allPosts.map((post) => (
               <PostItem key={post.title}>
                 <Link href={`/blog/posts/${post.id}`}>
                   <a>
-                    <h2>{post.title} </h2>
+                    <h2 style={{ fontWeight: 'normal' }}>{post.title} </h2>
                   </a>
                 </Link>
                 <p> {post.excerpt} </p>
                 <PostMeta>
-                  <small className="date"> {post.date} </small>
+                  <time> {post.date} </time>
                   {post.tags ? <small> | {post.tags.join(', ')}</small> : <></>}
                 </PostMeta>
               </PostItem>

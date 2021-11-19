@@ -5,8 +5,8 @@ module.exports = {
     return [
       {
         source: '/',
-        destination: '/blog',
-        permanent: true
+        destination: '/',
+        permanent: false
       }
     ]
   }

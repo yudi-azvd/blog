@@ -4,8 +4,6 @@ excerpt: 'Assuntos pra estudar sobre Engenharia de Software'
 title: 'Assuntos pra estudar sobre Engenharia de Software'
 ---
 
-Created: September 11, 2021 5:43 PM
-
 - [ ]  Algoritmos e Estrutura de Dados
     - [ ]  [Algoritmos I](https://www.coursera.org/learn/algorithms-part1), University of Princeton
     - [ ]  [Algoritmos II](https://www.coursera.org/learn/algorithms-part2), University of Princeton
