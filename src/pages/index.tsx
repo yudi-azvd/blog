@@ -1,14 +1,21 @@
 import { NextPage } from 'next'
+import Head from 'next/head'
 
 import Link from '../components/Link'
 
 const Home: NextPage = () => {
   return (
     <>
-      <h1>Oi</h1>
-      <Link href="/blog">
-        <a>Aqui ó</a>
-      </Link>
+      <Head>
+        <title>Yudi Yamane</title>
+      </Head>
+
+      <h1>
+        Por enquanto só tem o{' '}
+        <Link href="/blog">
+          <a>blog</a>
+        </Link>
+      </h1>
     </>
   )
 }

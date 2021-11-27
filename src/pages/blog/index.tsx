@@ -28,14 +28,16 @@ const Blog: NextPage<Props> = ({ allPosts }: Props) => {
             posts temporários, apenas para teste. O último nem é meu xD
           </small>
           <br />
+
           <ul>
             {allPosts.map((post) => (
-              <PostItem key={post.title}>
-                <Link href={`/blog/posts/${post.id}`}>
-                  <a>
-                    <h2 style={{ fontWeight: 'normal' }}>{post.title} </h2>
-                  </a>
-                </Link>
+              <PostItem key={`${post.date}-${post.title}`}>
+                <h2 style={{ fontWeight: 'normal' }}>
+                  <Link href={`/blog/posts/${post.id}`}>
+                    <a>{post.title}</a>
+                  </Link>
+                </h2>
+
                 <p> {post.excerpt} </p>
                 <PostMeta>
                   <time> {post.date} </time>
