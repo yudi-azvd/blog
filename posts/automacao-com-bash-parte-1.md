@@ -1,6 +1,6 @@
 ---
 title: 'Automação com Bash, parte 1'
-excerpt: 'O que é automação?'
+excerpt: 'Básico de watch, ps e grep'
 date: '2021-11-20'
 tags: ['automação', 'bash', 'série-automação']
 ---
@@ -112,7 +112,7 @@ consulte as páginas do manual para esse comando.
 Executando `watch date +%R` no terminal deve resultar nas horas sendo impressas
 a cada 2 segundos, com um cabeçalho com parâmetros adicionais sobre o comando. Não
 é bem o que a gente quer, mas estamos quase lá. Você pode interromper a execução
-de `watch` com <kbd>Ctrl</kbd> + <kbd>C</kbd>
+de `watch` com <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
 Olhando no manual de `watch`,
 percebemos que existe uma flag `-n` para especificar o intervalo de tempo em

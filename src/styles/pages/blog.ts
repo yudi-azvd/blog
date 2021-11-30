@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   height: 100vh;
   width: 100vw;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
 `
@@ -15,6 +16,12 @@ export const Content = styled.main`
 
   h1 {
     margin-bottom: 32px;
+  }
+
+  @media (min-width: 650px) {
+    & {
+      max-width: calc(800px - (30px * 2));
+    }
   }
 `
 
@@ -32,7 +39,7 @@ export const PostItem = styled.li`
 `
 
 export const PostMeta = styled.div`
-  color: grey;
+  color: var(--color-fg-muted);
   display: flex;
   align-items: center;
 

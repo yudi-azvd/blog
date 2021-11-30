@@ -3,18 +3,18 @@ import { createGlobalStyle } from 'styled-components'
 export default createGlobalStyle`
   :root {
     font-size: 16px;
-    --color-fg-default: #24292f;
-    --color-fg-muted: #57606a;
-    --color-fg-subtle: #6e7781;
-    --color-canvas-default: #ffffff;
-    --color-canvas-subtle: #f6f8fa;
-    --color-border-default: #d0d7de;
-    --color-border-muted: hsla(210,18%,87%,1);
-    --color-neutral-muted: rgba(175,184,193,0.2);
-    --color-accent-fg: #0969da;
-    --color-accent-emphasis: #0969da;
-    --color-danger-fg: #cf222e;
-  }
+    --color-fg-default: #c9d1d9;
+    --color-fg-muted: #8b949e;
+    --color-fg-subtle: #484f58;
+    --color-canvas-default: #0d1117;
+    --color-canvas-subtle: #161b22;
+    --color-border-default: #30363d;
+    --color-border-muted: #21262d;
+    --color-neutral-muted: rgba(110,118,129,0.4);
+    --color-accent-fg: #58a6ff;
+    --color-accent-emphasis: #1f6feb;
+    --color-danger-fg: #f85149;
+    }
 
   * {
     margin: 0;
@@ -23,9 +23,13 @@ export default createGlobalStyle`
     outline: 0
   }
 
+  html {
+    overflow-y: overlay;
+  }
+
   body {
-    background: #fff;
-    color: #222;
+    background: var(--color-canvas-default);
+    color: var(--color-fg-default);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -55,7 +59,7 @@ export default createGlobalStyle`
   }
 
   a {
-    color: #0070f3;
+    color: var(--color-accent-fg);
     text-decoration: none;
   }
 

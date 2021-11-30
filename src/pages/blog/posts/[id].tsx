@@ -43,6 +43,7 @@ export default function PostPage({ post }: PostProps) {
     <>
       <Head>
         <title> {post.title} </title>
+        <meta name="description" content={post.excerpt} />
       </Head>
 
       <Container>

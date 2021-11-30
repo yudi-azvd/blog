@@ -3,18 +3,27 @@ import styled from 'styled-components'
 export const Container = styled.div`
   height: 100vh;
   width: 100vw;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
 `
 
+// Copiei descaradamente daqui
+// https://github.com/sindresorhus/github-markdown-css/blob/main/github-markdown.css
 export const MarkdownContent = styled.article`
   margin: 8% auto;
   width: 90%;
   display: flex;
   flex-direction: column;
+  line-height: 1.5;
+
+  @media (min-width: 650px) {
+    & {
+      max-width: calc(800px - (30px * 2));
+    }
+  }
 
   h1 {
-    font-weight: normal;
     margin-bottom: 4px;
   }
 
@@ -38,16 +47,17 @@ export const MarkdownContent = styled.article`
   }
 
   code {
-    background: #ccc;
-    border-radius: 4px;
-    padding: 0px 0.2em;
+    background: var(--color-canvas-subtle);
+    border-radius: 6px;
+    font-size: 95%;
+    padding: 0px 0.4em;
   }
 
   pre {
-    background: #ccc;
-    overflow: scroll;
-    padding: 8px;
-    border-radius: 4px;
+    background: var(--color-canvas-subtle);
+    overflow: auto;
+    padding: 16px;
+    border-radius: 6px;
     font-size: 12px;
     margin-top: 0;
     margin-bottom: 16px;
@@ -70,6 +80,10 @@ export const MarkdownContent = styled.article`
 
   a {
     margin-top: 16px;
+  }
+
+  a:last-of-type {
+    margin-bottom: 32px;
   }
 
   ul,
@@ -99,14 +113,14 @@ export const MarkdownContent = styled.article`
 `
 
 export const PostDetails = styled.div`
-  color: grey;
+  color: var(--color-fg-muted);
   display: flex;
   align-items: center;
   margin-bottom: 16px;
 
   time,
   small {
-    font-size: 0.8em;
+    font-size: 1em;
   }
 
   time {

@@ -1,17 +1,15 @@
 import type { AppProps } from 'next/app'
+import { ThemeProvider } from 'styled-components'
 
 import GlobalStyle from '../styles/global'
+import theme from 'src/styles/theme'
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
-      {/* Theme Provider: aula da rocketseat */}
-      {/* https://youtu.be/1nVUfZg2dSA?t=1368 */}
-      {/* ThemeProvider */}
       <Component {...pageProps} />
-      {/* ThemeProvider */}
-    </>
+    </ThemeProvider>
   )
 }
 

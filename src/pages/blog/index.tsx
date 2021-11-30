@@ -24,9 +24,6 @@ const Blog: NextPage<Props> = ({ allPosts }: Props) => {
         <Content>
           <h1>Posts</h1>
 
-          <small>
-            posts temporários, apenas para teste. O último nem é meu xD
-          </small>
           <br />
 
           <ul>
