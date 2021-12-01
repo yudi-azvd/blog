@@ -4,10 +4,6 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import { marked } from 'marked'
 
-import rehypeHighlight from 'rehype-highlight'
-import { remark } from 'remark'
-import remarkHtml from 'remark-html'
-
 import Post from '../types/post'
 import { getAvailableTags } from './tags'
 

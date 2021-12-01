@@ -18,7 +18,8 @@ export const Content = styled.main`
     margin-bottom: 32px;
   }
 
-  p {
+  p,
+  a {
     margin-bottom: 16px;
   }
 

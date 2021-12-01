@@ -54,8 +54,8 @@ Engeharia de Software, vale à pena você dar uma olhada nessa disciplina.
 
 Neste post vamos aprender alguns conceitos e comandos:
 
-- operador pipe
 - `watch`
+- operador pipe
 - `ps`
 - `grep`
 
