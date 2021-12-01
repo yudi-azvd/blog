@@ -9,8 +9,10 @@ import { remark } from 'remark'
 import remarkHtml from 'remark-html'
 
 import Post from '../types/post'
+import { getAvailableTags } from './tags'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
+const availableTags = getAvailableTags()
 
 export function getSortedPosts(): Post[] {
   const filenames = fs.readdirSync(postsDirectory)

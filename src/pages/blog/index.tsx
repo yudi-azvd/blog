@@ -5,7 +5,12 @@ import Link from '../../components/Link'
 import { getSortedPosts } from '../../lib/posts'
 import Post from '../../types/post'
 
-import { Container, Content, PostItem, PostMeta } from '../../styles/pages/blog'
+import {
+  Container,
+  Content,
+  PostItem,
+  PostMeta,
+} from '../../styles/pages/blog/blog'
 
 interface Props {
   allPosts: Post[]
@@ -23,9 +28,13 @@ const Blog: NextPage<Props> = ({ allPosts }: Props) => {
       <Container>
         <Content>
           <h1>Posts</h1>
-
           <br />
 
+          <Link href="/blog/tags">
+            <a> Tags </a>
+          </Link>
+
+          <br />
           <ul>
             {allPosts.map((post) => (
               <PostItem key={`${post.date}-${post.title}`}>

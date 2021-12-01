@@ -48,6 +48,10 @@ export default function PostPage({ post }: PostProps) {
 
       <Container>
         <MarkdownContent>
+          <Link href="/blog">
+            <a>← Voltar</a>
+          </Link>
+
           <h1> {post.title} </h1>
           <PostDetails>
             <time> {post.date} </time>
