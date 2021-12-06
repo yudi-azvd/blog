@@ -1,5 +1,5 @@
 import matter from 'gray-matter'
-import { PostMeta } from 'src/types/post'
+import { PostMeta } from '../types/post'
 import * as yup from 'yup'
 
 const schema = yup.object().shape({
@@ -21,14 +21,18 @@ class FrontMatterParser {
   frontMatter: PostMeta
   content: string
 
-  constructor(fileContent: string) {
+  constructor(fileContent: string, withContent = false) {
     const matterResult = matter(fileContent)
     this.frontMatter = matterResult.data as PostMeta
-    this.content = matterResult.content
+    this.content = withContent ? matterResult.content : ''
   }
 
-  get() {
+  getFrontMatter() {
     return this.frontMatter
+  }
+
+  getContent() {
+    return this.content
   }
 
   async run() {
@@ -38,7 +42,7 @@ class FrontMatterParser {
       if (error instanceof yup.ValidationError) {
         const errorMessage = error.inner
           .map((err) => err.message)
-          .join('')
+          .join('\n')
           .concat(` from ${this.frontMatter.date}-${this.frontMatter.title}.md`)
 
         throw errorMessage

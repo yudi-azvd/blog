@@ -23,7 +23,11 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostsIds()
+  const ids = getAllPostsIds()
+  const paths = ids.map((id) => ({
+    params: { id },
+  }))
+
   return {
     paths,
     fallback: false,
@@ -47,7 +51,6 @@ export default function PostPage({ post }: PostProps) {
           <Link href="/blog">
             <a>← Voltar</a>
           </Link>
-
           <h1> {post.title} </h1>
           <PostDetails>
             <time> {post.date} </time>

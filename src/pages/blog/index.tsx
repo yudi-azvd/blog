@@ -66,6 +66,7 @@ export default Blog
 
 export const getStaticProps = async () => {
   const allPosts = await getSortedPosts()
+
   return {
     props: {
       allPosts,
