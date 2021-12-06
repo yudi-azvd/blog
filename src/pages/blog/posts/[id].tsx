@@ -2,14 +2,10 @@ import { GetStaticPaths } from 'next'
 import Head from 'next/head'
 
 import Link from '../../../components/Link'
-import {
-  Container,
-  MarkdownContent,
-  PostDetails,
-} from '../../../styles/pages/post'
+import { Container, MarkdownContent, PostDetails } from '@/styles/pages/post'
 
 import Post from '../../../types/post'
-import { getAllPostsIds, getPost } from '../../../lib/posts'
+import { getAllPostsIds, getPostById } from '../../../lib/postFunctions'
 
 interface Params {
   params: {
@@ -18,7 +14,7 @@ interface Params {
 }
 
 export async function getStaticProps({ params }: Params) {
-  const post = await getPost(params.id)
+  const post = await getPostById(params.id)
   return {
     props: {
       post,
@@ -55,10 +51,14 @@ export default function PostPage({ post }: PostProps) {
           <h1> {post.title} </h1>
           <PostDetails>
             <time> {post.date} </time>
-            {post.tags ? <small> | {post.tags.join(', ')}</small> : <></>}
+            {post.tags.length > 0 ? (
+              <small> | {post.tags.join(', ')}</small>
+            ) : (
+              <></>
+            )}
           </PostDetails>
 
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
 
           <Link href="/blog">
             <a>← Voltar</a>

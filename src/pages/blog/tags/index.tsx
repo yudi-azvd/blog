@@ -2,10 +2,10 @@ import Head from 'next/head'
 
 import Link from '@/components/Link'
 import { Container, Content } from '@/styles/pages/blog/tags'
-import { getAvailableTags } from 'src/lib/tags'
+import { getAvailableTags } from '@/lib/tags'
 
 interface TagsProps {
-  tags: [string]
+  tags: string[]
 }
 
 export default function Tags(props: TagsProps) {

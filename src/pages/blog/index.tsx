@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from '../../components/Link'
 
-import { getSortedPosts } from '../../lib/posts'
+import { getSortedPosts } from '../../lib/postFunctions'
 import Post from '../../types/post'
 
 import {
@@ -10,7 +10,7 @@ import {
   Content,
   PostItem,
   PostMeta,
-} from '../../styles/pages/blog/blog'
+} from '@/styles/pages/blog/blog'
 
 interface Props {
   allPosts: Post[]
@@ -47,7 +47,11 @@ const Blog: NextPage<Props> = ({ allPosts }: Props) => {
                 <p> {post.excerpt} </p>
                 <PostMeta>
                   <time> {post.date} </time>
-                  {post.tags ? <small> | {post.tags.join(', ')}</small> : <></>}
+                  {post.tags.length > 0 ? (
+                    <small> | {post.tags.join(', ')}</small>
+                  ) : (
+                    <></>
+                  )}
                 </PostMeta>
               </PostItem>
             ))}
@@ -61,7 +65,7 @@ const Blog: NextPage<Props> = ({ allPosts }: Props) => {
 export default Blog
 
 export const getStaticProps = async () => {
-  const allPosts = getSortedPosts()
+  const allPosts = await getSortedPosts()
   return {
     props: {
       allPosts,

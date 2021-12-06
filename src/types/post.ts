@@ -1,10 +1,13 @@
-interface Post {
-  id: string
-  tags: [string]
+export interface PostMeta {
+  tags: string[]
   title: string
   date: string
+  excerpt: string
+}
+
+interface Post extends PostMeta {
+  id: string
   dateFormatted?: string
-  excerpt?: string
   content: string
 }
 

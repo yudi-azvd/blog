@@ -68,7 +68,7 @@ Neste post vamos aprender alguns conceitos e comandos:
 ## Um pouco de prática: relógio ao vivo de terminal
 
 Vamos começar com uma situação muito simples: **mostrar as horas no terminal a cada
-intervalo de tempo, como um relógio ao vivo**. Em Linux, um que comando que mostra as
+intervalo de tempo, como um relógio ao vivo**. Em Linux, um comando que mostra as
 horas é o `date`. Se você usá-lo no terminal, você deve ver algo assim:
 
     sex nov 26 18:40:39 -03 2021
