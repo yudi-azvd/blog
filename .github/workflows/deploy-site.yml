@@ -13,13 +13,15 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: Npm install, build, export
+      - name: npm install
         run: |
           npm install
+      - name: npm build, export
+        run: |
           npm run build
           npm run export
           touch out/.nojekyll
-      - name: Deploy to GIthub Pages
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
