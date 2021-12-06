@@ -13,7 +13,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: |
+      - name: Npm install, build, export
+        run: |
           npm install
           npm run build
           npm run export
@@ -24,4 +25,3 @@ jobs:
           branch: gh-pages
           folder: out
 
-  
