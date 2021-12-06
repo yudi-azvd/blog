@@ -3,9 +3,9 @@
  * @returns tags
  */
 export function getAvailableTags() {
-  return ['bash', 'automação', 'markdown-reference', 'série-automação']
+  return ['bash', 'automação', 'markdown-reference', 'série-automação', 'c']
 }
 
 export function getPostsWithThisTag(tag: string) {
-  return ['id']
+  return [tag]
 }

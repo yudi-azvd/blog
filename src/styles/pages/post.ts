@@ -113,9 +113,10 @@ export const MarkdownContent = styled.article`
 `
 
 export const PostDetails = styled.div`
+  display: block;
+  width: 100%;
+  height: 100%;
   color: var(--color-fg-muted);
-  display: flex;
-  align-items: center;
   margin-bottom: 16px;
 
   time,
@@ -123,7 +124,27 @@ export const PostDetails = styled.div`
     font-size: 1em;
   }
 
-  time {
-    margin-right: 4px;
+  small {
+    position: relative;
+    margin-left: 8px;
+
+    &::before {
+      left: -6px;
+      top: 5%;
+      content: '';
+      position: absolute;
+      // não sei pq. Tem alguma coisa a ver com a time {margin-right: 4px?
+
+      @media (min-width: 650px) {
+        & {
+          top: 4%;
+        }
+      }
+
+      width: 1px;
+      height: 1em;
+      background: var(--color-fg-muted);
+      color: var(--color-fg-muted);
+    }
   }
 `

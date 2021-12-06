@@ -12,6 +12,7 @@ import FrontMatterParser from './FrontMatterParser'
 const postsDirectory = path.join(process.cwd(), 'posts')
 let filenames = fs.readdirSync(postsDirectory)
 
+// convenção temporária: arquivos que começam com "-" não aparecem em produção
 if (process.env.NODE_ENV !== 'development')
   filenames = filenames.filter((fn) => !fn.startsWith('-'))
 
@@ -30,7 +31,30 @@ export async function getSortedPosts(): Promise<Post[]> {
   })
 }
 
-export function getAllPostsIds() {
+export async function getSortedPostsByTag(tag: string): Promise<Post[]> {
+  const allPosts = filenames.map(async (filename) => loadPost(filename, false))
+  const posts = await Promise.all(allPosts)
+
+  const postsWithTag = posts.filter((post) =>
+    post.tags.find((postTag) => postTag === tag),
+  )
+
+  return postsWithTag.sort(({ date: a }, { date: b }) => {
+    if (a < b) {
+      return 1
+    } else if (a > b) {
+      return -1
+    } else {
+      return 0
+    }
+  })
+}
+
+export function getAllPostsIds(): string[] {
+  return filenames.map((fn) => fn.replace(/.md$/, ''))
+}
+
+export function getAllPostsIdsByTag(): string[] {
   return filenames.map((fn) => fn.replace(/.md$/, ''))
 }
 
@@ -48,7 +72,7 @@ export async function getPostById(id: string): Promise<Post> {
   return post
 }
 
-async function loadPost(filename: string, withContent = false) {
+async function loadPost(filename: string, withContent = false): Promise<Post> {
   let dateFromFilename = ''
   const dateMatch = filename.match(/^-?(\d{4}-\d{2}-\d{2})/)
   if (dateMatch) dateFromFilename = dateMatch[1]
@@ -72,5 +96,5 @@ async function loadPost(filename: string, withContent = false) {
     id,
     ...frontMatter,
     content,
-  } as Post
+  }
 }

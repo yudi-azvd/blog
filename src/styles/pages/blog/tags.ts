@@ -23,6 +23,11 @@ export const Content = styled.main`
     margin-bottom: 16px;
   }
 
+  li {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+
   @media (min-width: 650px) {
     & {
       max-width: calc(800px - (30px * 2));

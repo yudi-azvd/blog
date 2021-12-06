@@ -40,15 +40,27 @@ export const PostItem = styled.li`
 
 export const PostMeta = styled.div`
   color: var(--color-fg-muted);
-  display: flex;
-  align-items: center;
+  display: block;
 
   time,
   small {
     font-size: 0.8em;
   }
 
-  time {
-    margin-right: 4px;
+  small {
+    margin-left: 8px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      // não sei pq. Tem alguma coisa a ver com a time {margin-right: 4px?
+      left: -6px;
+      top: 5%;
+      width: 1px;
+      height: 1em;
+      background: var(--color-fg-muted);
+      color: var(--color-fg-muted);
+    }
   }
 `

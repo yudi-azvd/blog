@@ -1,11 +1,11 @@
 import { GetStaticPaths } from 'next'
 import Head from 'next/head'
 
-import Link from '../../../components/Link'
 import { Container, MarkdownContent, PostDetails } from '@/styles/pages/post'
 
 import Post from '../../../types/post'
 import { getAllPostsIds, getPostById } from '../../../lib/postFunctions'
+import GoBack from '@/components/GoBack'
 
 interface Params {
   params: {
@@ -48,14 +48,13 @@ export default function PostPage({ post }: PostProps) {
 
       <Container>
         <MarkdownContent>
-          <Link href="/blog">
-            <a>← Voltar</a>
-          </Link>
+          <GoBack to="/blog" />
+
           <h1> {post.title} </h1>
           <PostDetails>
             <time> {post.date} </time>
             {post.tags.length > 0 ? (
-              <small> | {post.tags.join(', ')}</small>
+              <small> {post.tags.join(', ')}</small>
             ) : (
               <></>
             )}
@@ -63,9 +62,7 @@ export default function PostPage({ post }: PostProps) {
 
           <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
 
-          <Link href="/blog">
-            <a>← Voltar</a>
-          </Link>
+          <GoBack to="/blog" />
         </MarkdownContent>
       </Container>
     </>

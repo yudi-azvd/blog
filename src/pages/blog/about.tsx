@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
-import Link from '@/components/Link'
 import { Container, Content } from '@/styles/pages/blog/about'
+import GoBack from '@/components/GoBack'
 
 export default function About() {
   return (
@@ -12,9 +12,7 @@ export default function About() {
 
       <Container>
         <Content>
-          <Link href="/blog">
-            <a>← Voltar</a>
-          </Link>
+          <GoBack to="/blog" />
 
           <h1>Sobre mim</h1>
           <div>

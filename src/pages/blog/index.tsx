@@ -48,7 +48,7 @@ const Blog: NextPage<Props> = ({ allPosts }: Props) => {
                 <PostMeta>
                   <time> {post.date} </time>
                   {post.tags.length > 0 ? (
-                    <small> | {post.tags.join(', ')}</small>
+                    <small> {post.tags.join(', ')}</small>
                   ) : (
                     <></>
                   )}
