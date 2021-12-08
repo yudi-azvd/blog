@@ -106,7 +106,7 @@ DESCRIPTION
 
 No terminal, você pode rolar a página para baixo com as setas do teclado ou com
 a barra de rolagem do mouse. Toda vez que você tiver dúvida sobre o funcionamento
-de algum comando ou suas flags e opções, ~~pesquise primeiro no Stackoverflow~~
+de algum comando ou suas flags e opções, ~pesquise primeiro no Stackoverflow~
 consulte as páginas do manual para esse comando.
 
 Executando `watch date +%R` no terminal deve resultar nas horas sendo impressas

@@ -8,6 +8,7 @@ import rehypeHighlight from 'rehype-highlight'
 
 import Post from '../types/post'
 import FrontMatterParser from './FrontMatterParser'
+import remarkGfm from 'remark-gfm'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 let filenames = fs.readdirSync(postsDirectory)
@@ -62,8 +63,8 @@ export async function getPostById(id: string): Promise<Post> {
   const filename = `${id}.md`
   const post = await loadPost(filename, true)
   const processedContent = await remark()
-    // TODO: fazer o highlight funcionar
     .use(remarkHtml)
+    .use(remarkGfm)
     .use(rehypeHighlight)
     .process(post.content)
 
