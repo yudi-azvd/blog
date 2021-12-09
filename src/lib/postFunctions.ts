@@ -1,14 +1,16 @@
-import path from 'path'
 import fs from 'fs'
+import path from 'path'
 import assert from 'assert'
 
-import { remark } from 'remark'
-import remarkHtml from 'remark-html'
 import rehypeHighlight from 'rehype-highlight'
-
-import Post from '../types/post'
-import FrontMatterParser from './FrontMatterParser'
+import rehypeStringify from 'rehype-stringify'
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
+import remarkRehype from 'remark-rehype'
 import remarkGfm from 'remark-gfm'
+import { remark } from 'remark'
+
+import Post from '@/types/post'
+import FrontMatterParser from './FrontMatterParser'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 let filenames = fs.readdirSync(postsDirectory)
@@ -55,17 +57,40 @@ export function getAllPostsIds(): string[] {
   return filenames.map((fn) => fn.replace(/.md$/, ''))
 }
 
-export function getAllPostsIdsByTag(): string[] {
-  return filenames.map((fn) => fn.replace(/.md$/, ''))
-}
-
+/**
+ * Função que deve ser chamada para renderizar um post de fato.
+ * @param id ID do post
+ * @returns Post com `.content` preenchido
+ */
 export async function getPostById(id: string): Promise<Post> {
   const filename = `${id}.md`
   const post = await loadPost(filename, true)
+  // TODO: Abstrair remark em uma função/classe
   const processedContent = await remark()
-    .use(remarkHtml)
     .use(remarkGfm)
-    .use(rehypeHighlight)
+    .use(remarkRehype)
+    // Example: syntax highlighting
+    // https://www.npmjs.com/package/rehype-sanitize
+    .use(rehypeSanitize, {
+      ...defaultSchema,
+      attributes: {
+        ...defaultSchema.attributes,
+        code: [
+          ...(defaultSchema.attributes?.code || []),
+          // List of all allowed languages:
+          [
+            'className',
+            'language-js',
+            'language-css',
+            'language-md',
+            'language-c',
+            'language-sh',
+          ],
+        ],
+      },
+    })
+    .use(rehypeHighlight, { subset: false })
+    .use(rehypeStringify)
     .process(post.content)
 
   post.content = processedContent.toString()

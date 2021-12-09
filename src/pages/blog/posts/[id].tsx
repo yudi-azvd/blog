@@ -44,6 +44,10 @@ export default function PostPage({ post }: PostProps) {
       <Head>
         <title> {post.title} </title>
         <meta name="description" content={post.excerpt} />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css"
+        ></link>
       </Head>
 
       <Container>
