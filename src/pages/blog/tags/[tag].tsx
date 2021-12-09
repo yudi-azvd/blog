@@ -38,7 +38,7 @@ export default function TagPage({ tag, posts }: Props) {
 
       <Container>
         <Content>
-          <GoBack to="/blog/tags" />
+          <GoBack />
 
           <h1> Posts sobre {tag} </h1>
 
@@ -51,6 +51,7 @@ export default function TagPage({ tag, posts }: Props) {
               </li>
             ))}
           </ul>
+          <GoBack />
         </Content>
       </Container>
     </>

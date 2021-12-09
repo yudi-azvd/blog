@@ -1,13 +1,15 @@
-import Link from '@/components/Link'
+import { useRouter } from 'next/router'
 
-interface Props {
-  to: string
-}
+import { Button } from './styles'
 
-export default function GoBack({ to }: Props) {
+export default function GoBack() {
+  const router = useRouter()
+
   return (
-    <Link href={to}>
-      <a>← Voltar</a>
-    </Link>
+    <>
+      <Button onClick={() => router.back()}>
+        <a>← Voltar</a>
+      </Button>
+    </>
   )
 }

@@ -18,7 +18,7 @@ export default function Tags(props: TagsProps) {
 
       <Container>
         <Content>
-          <GoBack to="/blog" />
+          <GoBack />
 
           <h1>Tags</h1>
           <div>

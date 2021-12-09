@@ -52,7 +52,7 @@ export default function PostPage({ post }: PostProps) {
 
       <Container>
         <MarkdownContent>
-          <GoBack to="/blog" />
+          <GoBack />
 
           <h1> {post.title} </h1>
           <PostDetails>
@@ -66,7 +66,7 @@ export default function PostPage({ post }: PostProps) {
 
           <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
 
-          <GoBack to="/blog" />
+          <GoBack />
         </MarkdownContent>
       </Container>
     </>
