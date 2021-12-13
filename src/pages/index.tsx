@@ -39,6 +39,7 @@ const Home: NextPage = () => {
       <Container>
         <Content>
           <h1>Site em construção</h1>
+
           <p>
             Por enquanto só tem o{' '}
             <Link href="/blog">
