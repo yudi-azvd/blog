@@ -14,13 +14,18 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/tags">
+              <Link href="/blog/tags">
                 <a>Tags</a>
               </Link>
             </li>
             <li>
               <Link href="#">
                 <a>Séries</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog/about">
+                <a>Sobre</a>
               </Link>
             </li>
           </ul>
