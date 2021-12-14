@@ -30,11 +30,6 @@ const Blog: NextPage<Props> = ({ allPosts }: Props) => {
           <h1>Posts</h1>
           <br />
 
-          <Link href="/blog/tags">
-            <a> Tags </a>
-          </Link>
-
-          <br />
           <ul>
             {allPosts.map((post) => (
               <PostItem key={`${post.date}-${post.title}`}>

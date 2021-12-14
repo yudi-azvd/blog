@@ -1,6 +1,6 @@
 import { Container, Content } from './style'
 
-import Link from '../Link'
+import Link from '@/components/Link'
 
 export default function Header() {
   return (
@@ -16,11 +16,6 @@ export default function Header() {
             <li>
               <Link href="/blog/tags">
                 <a>Tags</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
-                <a>Séries</a>
               </Link>
             </li>
             <li>

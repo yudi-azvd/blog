@@ -15,16 +15,17 @@ export const Content = styled.main`
 
   h1 {
     margin-bottom: 32px;
-    margin-top: 32px;
   }
 
   p {
-    margin-bottom: 4px;
+    margin-bottom: 1em;
   }
 
   @media (min-width: 650px) {
-    & {
-      max-width: calc(800px - (30px * 2));
+    max-width: calc(800px - (30px * 2));
+
+    p {
+      width: 70%;
     }
   }
 `

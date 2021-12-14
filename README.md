@@ -8,3 +8,7 @@ só um [blog](https://yudi-azvd.github.io/blog).
 ## Progresso/Roadmap
 
 [Projeto no GitHub](https://github.com/yudi-azvd/yudi-azvd.github.io/projects/1)
+
+## Desenvolvimento
+Por curiosidade, você pode ver o resultado do que eu tô desenvolvendo ou
+escrevendo nesse [link](https://yudi-azvd-github-io.vercel.app/).

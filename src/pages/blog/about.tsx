@@ -1,7 +1,6 @@
 import Head from 'next/head'
 
 import { Container, Content } from '@/styles/pages/blog/about'
-import GoBack from '@/components/GoBack'
 
 export default function About() {
   return (
@@ -12,8 +11,6 @@ export default function About() {
 
       <Container>
         <Content>
-          <GoBack />
-
           <h1>Sobre mim</h1>
           <div>
             <p>Olá, meu nome é Yudi Yamane.</p>

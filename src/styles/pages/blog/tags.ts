@@ -15,7 +15,6 @@ export const Content = styled.main`
 
   h1 {
     margin-bottom: 32px;
-    margin-top: 32px;
   }
 
   p,
