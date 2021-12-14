@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { Container, Content } from '@/styles/pages/blog/tags'
 import { getAvailableTags } from '@/lib/tags'
 import Link from '@/components/Link'
-import GoBack from '@/components/GoBack'
 
 interface TagsProps {
   tags: string[]

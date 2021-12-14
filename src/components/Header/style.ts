@@ -30,4 +30,10 @@ export const Content = styled.div`
       text-decoration: none;
     }
   }
+
+  @media (min-width: 650px) {
+    & {
+      max-width: calc(800px - (30px * 2));
+    }
+  }
 `
