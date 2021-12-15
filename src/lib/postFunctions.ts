@@ -15,9 +15,9 @@ import FrontMatterParser from './FrontMatterParser'
 const postsDirectory = path.join(process.cwd(), 'posts')
 let filenames = fs.readdirSync(postsDirectory)
 
-// convenção temporária: arquivos que começam com "-" não aparecem em produção
+// convenção temporária: arquivos que contém "@d" (draft) não aparecem em produção
 if (process.env.NODE_ENV !== 'development')
-  filenames = filenames.filter((fn) => !fn.startsWith('-'))
+  filenames = filenames.filter((fn) => !fn.includes('@d'))
 
 export async function getSortedPosts(): Promise<Post[]> {
   const allPosts = filenames.map(async (filename) => loadPost(filename, false))

@@ -48,7 +48,7 @@ foi onde eu formei a base do meu conhecimento (ainda fraca por falta de prática
 do programa `sed` e de [regex](https://en.wikipedia.org/wiki/Regular_expression)
 (regular expressions ou expressões regulares),
 que vão ser bastante usados nesta série. Se você estuda Ciências da Computação ou
-Engeharia de Software, vale à pena você dar uma olhada nessa disciplina.
+Engenharia de Software, vale à pena você dar uma olhada nessa disciplina.
 
 ## Tópicos deste post
 
