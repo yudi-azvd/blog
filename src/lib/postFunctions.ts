@@ -19,30 +19,22 @@ let filenames = fs.readdirSync(postsDirectory)
 if (process.env.NODE_ENV !== 'development')
   filenames = filenames.filter((fn) => !fn.includes('@d'))
 
-export async function getSortedPosts(): Promise<Post[]> {
-  const allPosts = filenames.map(async (filename) => loadPost(filename, false))
-  const posts = await Promise.all(allPosts)
-
-  return posts.sort(({ date: a }, { date: b }) => {
-    if (a < b) {
-      return 1
-    } else if (a > b) {
-      return -1
-    } else {
-      return 0
-    }
-  })
+interface SearchPostsParams {
+  filterTag?: string
 }
 
-export async function getSortedPostsByTag(tag: string): Promise<Post[]> {
+export async function getSortedPosts(
+  searchParams: SearchPostsParams,
+): Promise<Post[]> {
   const allPosts = filenames.map(async (filename) => loadPost(filename, false))
-  const posts = await Promise.all(allPosts)
+  let posts = await Promise.all(allPosts)
 
-  const postsWithTag = posts.filter((post) =>
-    post.tags.find((postTag) => postTag === tag),
-  )
+  if (searchParams && searchParams.filterTag)
+    posts = posts.filter((post) =>
+      post.tags.find((postTag) => postTag === searchParams.filterTag),
+    )
 
-  return postsWithTag.sort(({ date: a }, { date: b }) => {
+  return posts.sort(({ date: a }, { date: b }) => {
     if (a < b) {
       return 1
     } else if (a > b) {

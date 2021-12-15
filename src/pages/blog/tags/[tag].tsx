@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Post from '../../../types/post'
 import GoBack from '@/components/GoBack'
 import Link from '@/components/Link'
-import { getSortedPostsByTag } from '@/lib/postFunctions'
+import { getSortedPosts, getSortedPostsByTag } from '@/lib/postFunctions'
 import { getAvailableTags } from '@/lib/tags'
 import { Container, Content } from '@/styles/pages/blog/tags'
 
@@ -15,7 +15,8 @@ interface Params {
 }
 
 export const getStaticProps = async ({ params }: Params) => {
-  const postsWithThisTag = await getSortedPostsByTag(params.tag)
+  // const postsWithThisTag = await getSortedPostsByTag(params.tag)
+  const postsWithThisTag = await getSortedPosts({ filterTag: params.tag })
   return {
     props: {
       tag: params.tag,
