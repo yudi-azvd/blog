@@ -24,7 +24,7 @@ interface SearchPostsParams {
 }
 
 export async function getSortedPosts(
-  searchParams: SearchPostsParams,
+  searchParams?: SearchPostsParams,
 ): Promise<Post[]> {
   const allPosts = filenames.map(async (filename) => loadPost(filename, false))
   let posts = await Promise.all(allPosts)
