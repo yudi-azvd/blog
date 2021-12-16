@@ -1,7 +1,7 @@
 ---
 title: 'Markdown cheatseet'
 excerpt: 'Post com vários elementos de markdown e HTML'
-date: '2020-12-20'
+date: '2021-01-20'
 tags: ['markdown-reference']
 ---
 
