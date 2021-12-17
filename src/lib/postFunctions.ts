@@ -18,6 +18,7 @@ let filenames = fs.readdirSync(postsDirectory)
 // convenção temporária: arquivos que contém "@d" (draft) não aparecem em produção
 if (process.env.NODE_ENV !== 'development')
   filenames = filenames.filter((fn) => !fn.includes('@d'))
+console.log({ env: process.env.NODE_ENV })
 
 interface SearchPostsParams {
   filterTag?: string
