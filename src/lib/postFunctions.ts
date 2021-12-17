@@ -16,7 +16,7 @@ const postsDirectory = path.join(process.cwd(), 'posts')
 let filenames = fs.readdirSync(postsDirectory)
 
 // convenção temporária: arquivos que contém "@d" (draft) não aparecem em produção
-if (process.env.NODE_ENV !== 'development' || process.env.VERCEL_ENV)
+if (process.env.NODE_ENV !== 'development' || process.env.VERCEL_ENV === 'TRUE')
   filenames = filenames.filter((fn) => !fn.includes('@d'))
 console.log({ env: process.env.NODE_ENV }, process.env)
 
