@@ -5,11 +5,16 @@ tags: ['c']
 excerpt: 'Uma informação muito útil'
 ---
 
+## Uma introdução sobre o que vamos aprender
+Tenho que escrever mais.
+
 Aprendizados:
 
 - `getcwd`
 - `strcat`
 - `strstr`
+
+## Vamos começar
 
 Para a disciplina de Estrutura de Dados 2, eu tenho um
 [repositório](https://github.com/yudi-azvd/eda2/) com uma estrutura relativamente
@@ -38,7 +43,7 @@ pasta `/home/yudi/<vários diretórios>/eda2/resources` e com o seguinte conteú
 
 Em `06-graph/list-und-graph/_tests/` existem arquivos de testes que preenchem
 os grafos conforme os arquivos de dados na pasta `resources/algs4-data/`.
-**Como não estou usando nenhum Makefile, os testes são compilados e executados
+Como não estou usando nenhum Makefile, **os testes são compilados e executados
 de dentro de** `06-graph/list-und-graph/_tests/`.
 
 Os grafos são criados e preenchidos com a função:
@@ -68,9 +73,9 @@ como uma string
 no código (exemplo `/home/yudi/uni/eda2/resources`), mas isso traria algumas limitações:
 
 - Se eu mudasse o repositório `eda2` para outro lugar no meu computador, o caminho
-já não valeria mais
+  já não valeria mais
 - Se outra pessoa baixasse meu repositório no computador dela, o caminho já não
-valeria mais
+  valeria mais
 
 Ou eu poderia passar o caminho relativo do arquivo para a função
 `ListUndGraph_create_from_file`, mas isso trás outra inconveniência: eu teria que

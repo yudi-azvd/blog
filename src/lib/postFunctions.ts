@@ -16,11 +16,11 @@ const postsDirectory = path.join(process.cwd(), 'posts')
 let filenames = fs.readdirSync(postsDirectory)
 
 // convenção temporária: arquivos que contém "@d" (draft) não aparecem em produção
-if (process.env.VERCEL_ENV !== 'TRUE')
+// Usando Vercel como ambiente de stage, é onde os rascunhos vão aparecer
+if (process.env.VERCEL_ENV === 'TRUE' || process.env.NODE_ENV !== 'development')
   filenames = filenames.filter((fn) => !fn.includes('@d'))
 
-if (process.env.VERCEL_ENV === 'TRUE')
-  console.log('>>>>> olha só, tô na Vercel')
+console.log('>>>', process.env.VERCEL_ENV !== 'TRUE')
 
 interface SearchPostsParams {
   filterTag?: string
