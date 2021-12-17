@@ -20,8 +20,6 @@ let filenames = fs.readdirSync(postsDirectory)
 if (process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV !== 'TRUE')
   filenames = filenames.filter((fn) => !fn.includes('@d'))
 
-console.log('>>>', process.env.VERCEL_ENV === 'TRUE')
-
 interface SearchPostsParams {
   filterTag?: string
 }
@@ -79,6 +77,7 @@ export async function getPostById(id: string): Promise<Post> {
             'language-css',
             'language-md',
             'language-c',
+            'language-cpp',
             'language-sh',
           ],
         ],
