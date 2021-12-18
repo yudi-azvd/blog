@@ -52,6 +52,10 @@ export const MarkdownContent = styled.article`
     padding: 0px 0.4em;
   }
 
+  pre code {
+    font-size: 0.9rem;
+  }
+
   pre {
     background: var(--color-canvas-subtle);
     overflow: auto;

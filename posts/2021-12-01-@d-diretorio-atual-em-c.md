@@ -23,6 +23,7 @@ complexa para um "projeto" em C. Esse repositório vive no meu computador na
 pasta `/home/yudi/<vários diretórios>/eda2/`, mais ou menos com o seguinte conteúdo:
 
 ```
+.
 ├── ... outros arquivos como .gitignore, README.md, etc
 ├── 00-revisao/
 ├── 01-sorting/
@@ -54,7 +55,7 @@ ListUndGraph *ListUndGraph_create_from_file(const char *filepath)
 Que é chamada nos arquivos em `06-graph/list-und-graph/_tests/` ou
 em `06-graph/_exercises/`.
 
-### Primeiras soluções
+## Primeiras soluções
 
 A primeira solução que pensei foi a de passar o caminho relativo para o construtor,
 algo como `"../../../../resources/algs4-data/tinyG.txt"`. A quantidade de `../`
@@ -75,7 +76,7 @@ traz mais restrições:
 - Essa solução polui o projeto com informações do sistema de arquivos que estão
   fora do repositório e não importam pra ele.
 
-### Uma solução melhor
+## Uma solução melhor
 
 _Ao meu ver pelo menos._
 
@@ -115,10 +116,10 @@ Assim seria possível usar a função apenas com
 Eu teria que pesquisar mais pra configurar essas ferramentas apropriadamente, mas
 durante o curso de EDA2 eu não achei necessário fazer o setup de Make ou CMake
 para esses exercícios simples ~por preguiça ou falta de paciência pra aprender~.
-Ainda assim, vale ressaltar que em um projeto C/C++ de verdade essa estratégia
-seria mais adequada.
+Ainda assim, vale ressaltar que essa estratégia seria mais adequada em um projeto
+C/C++ de verdade .
 
-### Super pseudocódigo
+## Super pseudocódigo
 
 ```cpp
 void get_res_dir(char* res_dir) {
@@ -132,12 +133,94 @@ void get_res_dir(char* res_dir) {
 }
 ```
 
-### Implementação
+## Implementação de `get_res_dir`
+
+Para pegar o caminho absoluto do diretório eu pesquisei extamente isso no Google.
+Como estou programando em ambiente Linux, a função que foi recomendada foi
+`char* getcwd(char* buf, size_t size)` (get current working directory) do cabeçalho
+`unistd.h`. De acordo com as
+[páginas do manual](https://man7.org/linux/man-pages/man3/getcwd.3.html), ela retorna
+o diretório em `buf`, que deve apontar para um espaço previamente alocado.
+
+Executando a essa função no meu computador no diretório
+`/home/yudi/uni/eda2/06-graph/list-und-graph/_tests/`, ela retorna exatamente isso.
+Por prevenção, vamos usar um buffer com o tamanho máximo.
 
 ```c
-#include <unistd.h>
-#include <linux/limits.h>
-#include <string.h>
+getcwd(res_dir, PATH_MAX);
+```
+
+Agora precisamos apenas de uma substring disso tudo: `"/home/yudi/uni/eda2"`. Como
+diretório raíz do repositório, podemos usar a string `"eda2"` para extrair a
+substring de interesse. É uma suposição razoável porque é o nome do repositório
+e dificilmente vai mudar. Uma solução mais robusta, talvez, seria procurar o próximo
+diretório pai com a pasta `.git`, mas não vamos por esse caminho nesse post.
+
+Para extrair a substring, vamos usar a função
+
+```c
+char* strstr(const char *haystack, const char *needle)
+```
+
+Que encontra a primeira ocorrência de `needle` em `haystack` e retorna o ponteiro
+que aponta para onde `needle` foi encontrado. Executando
+
+```c
+const char *root_dir_name = "eda2";
+char *root_dir_ptr = strstr(res_dir, root_dir_name);
+```
+
+Agora `root_dir_ptr` aponta para a string `"eda2/06-graph/list-und-graph/_tests"`.
+Vale ressaltar que não há cópias de strings, `root_dir_ptr` apenas aponta para
+uma região de memória alguns bytes à frente da região de memória apontada por
+`res_dir`, conforme a ilustração abaixo:
+
+```
+/home/yudi/uni/eda2/06-graph/list-und-graph/_tests/
+↑              ↑
+res_dir        root_dir_ptr
+```
+
+Como não precisamos de nada que vem depois de `"eda2/"`, podemos desconsiderar
+essa parte colocando o terminador de string `'\0'`.
+
+```c
+*(root_dir_ptr + strlen(root_dir_name)) = '\0';
+```
+
+Agora `res_dir` aponta para
+
+```
+                   Note o '\0'
+                   ↓
+/home/yudi/uni/eda2\006-graph/list-und-graph/_tests/
+↑              ↑
+res_dir        root_dir_ptr
+
+```
+
+Que é o mesmo que:
+
+```
+
+/home/yudi/uni/eda2
+↑              ↑
+res_dir        root_dir_ptr
+```
+
+Agora só precisamos concatenar `"/resources"` ao final de `res_dir`:
+
+```c
+const char *res = "/resources";
+strcat(res_dir, res);
+```
+
+Juntando tudo, a função `get_res_dir` fica assim:
+
+```c
+#include <unistd.h>       // getcwd
+#include <linux/limits.h> // PATH_MAX
+#include <string.h>       // strstr, strcat, strlen
 
 // Preenche RES_DIR com "/.../eda2/resources".
 // "..." é o caminho absoluto até "eda2/".
@@ -146,10 +229,25 @@ void get_res_dir(char* res_dir) {
 void get_res_dir(char *res_dir)
 {
   getcwd(res_dir, PATH_MAX);
-  const char *base_dir_name = "eda2";
-  char *base_ptr = strstr(res_dir, base_dir_name);
-  *(base_ptr + strlen(base_dir_name)) = '\0';
+  const char *root_dir_name = "eda2";
+  char *root_dir_ptr = strstr(res_dir, root_dir_name);
+  *(root_dir_ptr + strlen(root_dir_name)) = '\0';
   const char *res = "/resources";
   strcat(res_dir, res);
 }
 ```
+
+## Implementação de `ListUndGraph_create_from_file`
+
+```c
+ListUndGraph *ListUndGraph_create_from_file(const char *filepath)
+{
+  char full_filepath[PATH_MAX];
+  get_res_dir(full_filepath);
+  strcat(full_filepath, "/");
+  strcat(full_filepath, filepath);
+
+  // restante do código para preencher o grafo
+}
+```
+
