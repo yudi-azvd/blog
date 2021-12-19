@@ -1,13 +1,15 @@
 ---
-title: Como acessar o diretório atual em C, REFAZER TÍTULO
-date: '2021-12-01'
+title: Como ler do sistema de arquivos de um jeito organizado em C
+date: '2021-12-19'
 tags: ['c', 'sistema-de-arquivos']
-excerpt: 'Uma informação muito útil'
+excerpt: Usando getcwd, strcat e strstr
 ---
 
-## Uma introdução sobre o que vamos aprender
+## Pré-requisitos
 
-Tenho que escrever mais.
+- Ambiente Linux com GCC
+- Conhecimento de ponteiros e strings em C
+
 
 Aprendizados:
 
@@ -86,9 +88,9 @@ Para o cliente, seria interessante se a chamada do construtor fosse algo assim:
 ListUndGraph *g = ListUndGraph_create_from_file("algs4-data/tinyG.txt");
 ```
 
-Assim o construtor recebe apenas o _caminho relativo_ para o arquivo a partir de
-`resources/` e ele se encarrega de resolver o _caminho absoluto_ até a pasta
-`resources/` ou de chamar alguém que sabe fazê-lo.
+Dessa maneira, o construtor recebe apenas o _caminho relativo_ para o arquivo a
+partir de `resources/` e ele se encarrega de resolver o _caminho absoluto_ até a
+pasta `resources/` ou de chamar alguém que sabe fazê-lo.
 
 Vamos optar por criar a função `void get_res_dir(char *res_dir)` que preenche
 `res_dir` com o caminho absoluto até `resources/` e é usada pelo construtor. Como
@@ -99,15 +101,15 @@ Como vamos colocar `get_res_dir` em seu próprio arquivo de cabeçalho (`.h`), e
 precisa ser incluído por quem quer usá-lo. Infelizmente, o problema da quantidade
 `../` volta aqui na hora de usar `#include "../../../get_res_dir.h"`. Isso pode
 ser resolvido com um Makefile ou com um gerador de build system. Configurando
-essas ferramentas apropriadamente, a compilação lá no final aconteceria mais
-ou menos assim:
+essas ferramentas apropriadamente, a compilação por debaixo dos panos aconteceria
+mais ou menos assim:
 
 ```sh
 # essa quantidade de "../" é apenas para ilustração.
 gcc -I"../../../../get_res_dir.h" listundgraph.test.cpp -o listundgraph.test.out
 ```
 
-Assim seria possível usar a função apenas com
+Assim seria possível incluir a função apenas com
 
 ```c
 #include "get_res_dir.h"
@@ -163,7 +165,7 @@ char* strstr(const char *haystack, const char *needle)
 ```
 
 Que encontra a primeira ocorrência de `needle` em `haystack` e retorna o ponteiro
-que aponta para onde `needle` foi encontrado. Executando
+que aponta para onde `needle` foi encontrado.
 
 ```c
 const char *root_dir_name = "eda2";
@@ -239,6 +241,34 @@ void get_res_dir(char *res_dir)
 
 ## Implementação de `ListUndGraph_create_from_file`
 
+Agora só falta implementar o construtor de grafos. Vamos alocar um espaço para
+o caminho absoluto.
+
+```cpp
+char full_filepath[PATH_MAX]; // com lixo de memória por enquanto
+```
+
+Executando a função `get_res_dir` com `full_filepath` obtemos o seguinte:
+
+```cpp
+get_res_dir(full_filepath);
+// full_filepath: "/home/yudi/uni/eda2/resources"
+```
+
+Para terminar, precisamos acrescentar uma `"/"` e o caminho relativo do arquivo
+que foi passado a `ListUndGraph_create_from_file`. Vamos supor que esse caminho
+relativo é `"algs4-data/tinyG.txt"`.
+
+```c
+// full_filepath: "/home/yudi/uni/eda2/resources"
+strcat(full_filepath, "/");
+// full_filepath: "/home/yudi/uni/eda2/resources/"
+strcat(full_filepath, filepath);
+// full_filepath: "/home/yudi/uni/eda2/resources/algs4-data/tinyG.txt"
+```
+
+O código do construtor fica assim:
+
 ```c
 ListUndGraph *ListUndGraph_create_from_file(const char *filepath)
 {
@@ -251,3 +281,6 @@ ListUndGraph *ListUndGraph_create_from_file(const char *filepath)
 }
 ```
 
+Ainda seria possível deixar `ListUndGraph_create_from_file` mais interessante,
+criando uma função que faz o equivalente às últimas três linhas do trecho
+anterior. Fica como exercício para o leitor.
