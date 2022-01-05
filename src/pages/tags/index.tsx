@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { Container, Content } from '@/styles/pages/blog/tags'
+import { Container, Content } from '@/styles/pages/tags'
 import { getAvailableTags } from '@/lib/tags'
 import Link from '@/components/Link'
 
@@ -23,7 +23,7 @@ export default function Tags(props: TagsProps) {
             <ul>
               {props.tags.map((t, index) => (
                 <li key={`${index}-${t}`}>
-                  <Link href={`/blog/tags/${t}`}>
+                  <Link href={`/tags/${t}`}>
                     <a>{t}</a>
                   </Link>
                 </li>
