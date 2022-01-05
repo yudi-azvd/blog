@@ -1,56 +1,70 @@
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 import Head from 'next/head'
-
-import styled from 'styled-components'
-
 import Link from '../components/Link'
 
-const Container = styled.div`
-  width: 100vw;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-`
+import { getSortedPosts } from '../lib/postFunctions'
+import Post from '../types/post'
 
-const Content = styled.main`
-  margin: 8% auto;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
+import {
+  Container,
+  Content,
+  PostItem,
+  PostMeta,
+} from '@/styles/pages/blog'
 
-  h1 {
-    margin-bottom: 32px;
-  }
+interface Props {
+  allPosts: Post[]
+}
 
-  @media (min-width: 650px) {
-    & {
-      max-width: calc(800px - (30px * 2));
-    }
-  }
-`
-
-const Home: NextPage = () => {
+const Blog: NextPage<Props> = ({ allPosts }: Props) => {
   return (
     <>
       <Head>
         <title>Yudi Yamane</title>
+        <meta name="description" content="Blog do Yudi" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Container>
         <Content>
-          <h1>Site em construção</h1>
+          <h1>Posts</h1>
+          <br />
 
-          <p>
-            Por enquanto só tem o{' '}
-            <Link href="/blog">
-              <a>blog</a>
-            </Link>
-            .
-          </p>
+          <ul>
+            {allPosts.map((post) => (
+              <PostItem key={`${post.date}-${post.title}`}>
+                <h2 style={{ fontWeight: 'normal' }}>
+                  <Link href={`/posts/${post.id}`}>
+                    <a>{post.title}</a>
+                  </Link>
+                </h2>
+
+                <p> {post.excerpt} </p>
+                <PostMeta>
+                  <time> {post.date} </time>
+                  {post.tags.length > 0 ? (
+                    <small> {post.tags.join(', ')}</small>
+                  ) : (
+                    <></>
+                  )}
+                </PostMeta>
+              </PostItem>
+            ))}
+          </ul>
         </Content>
       </Container>
     </>
   )
 }
 
-export default Home
+export default Blog
+
+export const getStaticProps = async () => {
+  const allPosts = await getSortedPosts()
+
+  return {
+    props: {
+      allPosts,
+    },
+  }
+}

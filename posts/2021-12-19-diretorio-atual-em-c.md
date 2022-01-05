@@ -10,7 +10,6 @@ excerpt: Usando getcwd, strcat e strstr
 - Ambiente Linux com GCC
 - Conhecimento de ponteiros e strings em C
 
-
 Aprendizados:
 
 - `getcwd`
@@ -193,7 +192,7 @@ essa parte colocando o terminador de string `'\0'`.
 Agora `res_dir` aponta para
 
 ```
-                   Note o '\0'
+                   Note o '\0', antes era um '/'
                    ↓
 /home/yudi/uni/eda2\006-graph/list-und-graph/_tests/
 ↑              ↑
@@ -281,6 +280,16 @@ ListUndGraph *ListUndGraph_create_from_file(const char *filepath)
 }
 ```
 
+## Possíveis melhorias
+
 Ainda seria possível deixar `ListUndGraph_create_from_file` mais interessante,
 criando uma função que faz o equivalente às últimas três linhas do trecho
-anterior. Fica como exercício para o leitor.
+anterior.
+
+Outra melhoria seria deixar esse código um pouco mais cross-platform, ou seja,
+que funcione melhor independentemente do sistema operacional. O cabeçalho
+`unistd.h` não existe em Windows, o que geraria um erro de compilação. Uma
+maneira de resolver isso seria com macros condicionais e usando a função
+`GetCurrentDirectory` do cabeçalho `winbase.h`.
+
+Essas possíveis melhorias ficam como exercícios para leitor.

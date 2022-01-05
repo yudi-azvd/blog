@@ -1,12 +1,12 @@
 import { GetStaticPaths } from 'next'
 import Head from 'next/head'
 
-import Post from '../../../types/post'
+import Post from '../../types/post'
 import GoBack from '@/components/GoBack'
 import Link from '@/components/Link'
 import { getSortedPosts } from '@/lib/postFunctions'
 import { getAvailableTags } from '@/lib/tags'
-import { Container, Content } from '@/styles/pages/blog/tags'
+import { Container, Content } from '@/styles/pages/tags'
 
 interface Params {
   params: {
@@ -45,7 +45,7 @@ export default function TagPage({ tag, posts }: Props) {
           <ul>
             {posts.map((p) => (
               <li key={p.id}>
-                <Link href={`/blog/posts/${p.id}`}>
+                <Link href={`/posts/${p.id}`}>
                   <a>{p.title}</a>
                 </Link>
               </li>

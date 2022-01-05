@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { Container, Content } from '@/styles/pages/blog/about'
+import { Container, Content } from '@/styles/pages/about'
 
 export default function About() {
   return (

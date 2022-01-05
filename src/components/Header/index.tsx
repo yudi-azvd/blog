@@ -9,17 +9,17 @@ export default function Header() {
         <Content>
           <ul>
             <li>
-              <Link href="/blog">
+              <Link href="/">
                 <a>Blog</a>
               </Link>
             </li>
             <li>
-              <Link href="/blog/tags">
+              <Link href="/tags">
                 <a>Tags</a>
               </Link>
             </li>
             <li>
-              <Link href="/blog/about">
+              <Link href="/about">
                 <a>Sobre</a>
               </Link>
             </li>

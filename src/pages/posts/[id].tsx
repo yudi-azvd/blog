@@ -3,8 +3,8 @@ import Head from 'next/head'
 
 import { Container, MarkdownContent, PostDetails } from '@/styles/pages/post'
 
-import Post from '../../../types/post'
-import { getAllPostsIds, getPostById } from '../../../lib/postFunctions'
+import Post from '../../types/post'
+import { getAllPostsIds, getPostById } from '../../lib/postFunctions'
 import GoBack from '@/components/GoBack'
 
 interface Params {
