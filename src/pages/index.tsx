@@ -5,12 +5,7 @@ import Link from '../components/Link'
 import { getSortedPosts } from '../lib/postFunctions'
 import Post from '../types/post'
 
-import {
-  Container,
-  Content,
-  PostItem,
-  PostMeta,
-} from '@/styles/pages/blog'
+import { Container, Content, PostItem, PostMeta } from '@/styles/pages/blog'
 
 interface Props {
   allPosts: Post[]
