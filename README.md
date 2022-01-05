@@ -12,4 +12,4 @@ só um [blog](https://yudi-azvd.github.io/blog).
 ## Desenvolvimento
 
 Por curiosidade, você pode ver o resultado do que eu tô desenvolvendo ou
-escrevendo nesse [link](https://yudi-azvd-github-io.vercel.app/).
+escrevendo nesse [link](https://yudi-azvd-blog.vercel.app/blog).
