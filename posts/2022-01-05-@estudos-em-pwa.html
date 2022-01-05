@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="pt"><head><meta charSet="utf-8"/><meta name="description" content="Blog Yudi Yamane"/><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title> Estudos em PWA </title><meta name="description" content="Compilado dos meus achados sobre PWA revirando a internet"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github-dark.min.css"/><meta name="next-head-count" content="5"/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-a40ef1678bae11e696dba45124eadd70.js"></script><script src="/_next/static/chunks/webpack-514908bffb652963.js" defer=""></script><script src="/_next/static/chunks/framework-91d7f78b5b4003c8.js" defer=""></script><script src="/_next/static/chunks/main-208998328ec77b24.js" defer=""></script><script src="/_next/static/chunks/pages/_app-95326f6d671efe55.js" defer=""></script><script src="/_next/static/chunks/pages/posts/%5Bid%5D-546f35a6fa935227.js" defer=""></script><script src="/_next/static/pl2fLR_pka1EW0PNZk4aU/_buildManifest.js" defer=""></script><script src="/_next/static/pl2fLR_pka1EW0PNZk4aU/_ssgManifest.js" defer=""></script><script src="/_next/static/pl2fLR_pka1EW0PNZk4aU/_middlewareManifest.js" defer=""></script><style data-styled="" data-styled-version="5.3.3">:root{font-size:16px;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#484f58;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-danger-fg:#f85149;--color-header-bg:#161b22;--color-header-text:rgba(240,246,252,0.7);--color-header-logo:#f0f6fc;}/*!sc*/
+*{margin:0;padding:0;box-sizing:border-box;outline:0;}/*!sc*/
+html{overflow-y:overlay;}/*!sc*/
+body{background:var(--color-canvas-default);color:var(--color-fg-default);-webkit-font-smoothing:antialiased;}/*!sc*/
+body,input,button{font-family:Roboto,sans-serif;font-size:16px;}/*!sc*/
+h1,h2,h3,h4,h5,h6,strong{font-weight:bold;}/*!sc*/
+h1{font-size:2.25rem;}/*!sc*/
+h2{font-size:1.5rem;}/*!sc*/
+h3{font-size:1rem;}/*!sc*/
+button{cursor:pointer;}/*!sc*/
+a{color:var(--color-accent-fg);-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+a:hover{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+data-styled.g1[id="sc-global-bOvFXg1"]{content:"sc-global-bOvFXg1,"}/*!sc*/
+.bWbqvd{background:var(--color-header-bg);color:var(--color-header-logo);height:64px;width:100vw;}/*!sc*/
+data-styled.g2[id="sc-bdvvtL"]{content:"bWbqvd,"}/*!sc*/
+.dapBTY{font-size:1.2rem;width:90%;height:100%;margin:0 auto;}/*!sc*/
+.dapBTY ul{height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:left;-webkit-justify-content:left;-ms-flex-pack:left;justify-content:left;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;list-style:none;}/*!sc*/
+.dapBTY ul li + li{margin-left:32px;}/*!sc*/
+.dapBTY ul li a{color:var(--color-header-logo);font-weight:600;-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+@media (min-width:650px){.dapBTY{max-width:calc(800px - (30px * 2));}}/*!sc*/
+data-styled.g3[id="sc-gsDKAQ"]{content:"dapBTY,"}/*!sc*/
+.cpLhLY{width:100vw;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}/*!sc*/
+data-styled.g11[id="sc-pVTFL"]{content:"cpLhLY,"}/*!sc*/
+.dukZvK{margin:8% auto;width:90%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;line-height:1.5;}/*!sc*/
+@media (min-width:650px){.dukZvK{max-width:calc(800px - (30px * 2));}}/*!sc*/
+.dukZvK h1{margin-bottom:4px;}/*!sc*/
+.dukZvK h2,.dukZvK h3{margin-bottom:16px;margin-top:8px;}/*!sc*/
+.dukZvK p{font-size:1em;margin-bottom:16px;}/*!sc*/
+.dukZvK li > p{margin-top:16px;}/*!sc*/
+.dukZvK li + li{margin-top:0.25em;}/*!sc*/
+.dukZvK code{background:var(--color-canvas-subtle);border-radius:6px;font-size:95%;padding:0px 0.4em;}/*!sc*/
+.dukZvK pre code{font-size:0.9rem;}/*!sc*/
+.dukZvK pre{background:var(--color-canvas-subtle);overflow:auto;padding:16px;border-radius:6px;font-size:12px;margin-top:0;margin-bottom:16px;}/*!sc*/
+.dukZvK kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas, Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted);}/*!sc*/
+.dukZvK a{margin-top:16px;}/*!sc*/
+.dukZvK a:last-of-type{margin-bottom:32px;}/*!sc*/
+.dukZvK ul,.dukZvK ol{margin-top:0;margin-bottom:16px;padding-left:2em;}/*!sc*/
+.dukZvK blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:0.25em solid var(--color-border-default);}/*!sc*/
+.dukZvK h1,.dukZvK h2,.dukZvK h3,.dukZvK h4,.dukZvK h5,.dukZvK h6{margin-top:24px;margin-bottom:16px;line-height:1.25;}/*!sc*/
+data-styled.g12[id="sc-jrQzAO"]{content:"dukZvK,"}/*!sc*/
+.iDUbet{display:block;width:100%;height:100%;color:var(--color-fg-muted);margin-bottom:16px;}/*!sc*/
+.iDUbet time,.iDUbet small{font-size:1em;}/*!sc*/
+.iDUbet small{position:relative;margin-left:8px;}/*!sc*/
+.iDUbet small::before{left:-6px;top:5%;content:'';position:absolute;width:1px;height:1em;background:var(--color-fg-muted);color:var(--color-fg-muted);}/*!sc*/
+@media (min-width:650px){.iDUbet small::before{top:4%;}}/*!sc*/
+data-styled.g13[id="sc-kDTinF"]{content:"iDUbet,"}/*!sc*/
+.fXEOMs{background:transparent;display:inline;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;border:none;}/*!sc*/
+data-styled.g14[id="sc-iqseJM"]{content:"fXEOMs,"}/*!sc*/
+</style></head><body><div id="__next"><nav class="sc-bdvvtL bWbqvd"><div class="sc-gsDKAQ dapBTY"><ul><li><a href="/">Blog</a></li><li><a href="/tags">Tags</a></li><li><a href="/about">Sobre</a></li></ul></div></nav><div class="sc-pVTFL cpLhLY"><article class="sc-jrQzAO dukZvK"><button class="sc-iqseJM fXEOMs"><a>← Voltar</a></button><h1> <!-- -->Estudos em PWA<!-- --> </h1><div class="sc-kDTinF iDUbet"><time> <!-- -->2022-01-05<!-- --> </time><small> <!-- -->pwa</small></div><div><h2>PWA</h2>
+<p><strong>Super útil</strong>: <a href="https://github.com/onderceylan/pwa-asset-generator">PWA asset generator</a></p>
+<p>É possível disponibilizar o PWA em lojas de aplicativos.</p>
+<p><a href="https://www.youtube.com/watch?v=sFsRylCQblw">Progressive Web Apps in 100 Seconds</a>, Fireship</p>
+<p><a href="https://www.youtube.com/watch?v=ppwagkhrZJs">7 Web Features You Didn’t Know Existed</a></p>
+<p>Testei instalar o PWA no meu celular (Samsung Galaxy S20 FE) por dois navegadores:</p>
+<p><strong>Brave Browser</strong>:</p>
+<ul>
+<li>O ícone do navegador aparece no ícone do app.</li>
+<li>A resolução do ícone estava um pouco a desejar, como se tivesse sido um pouco
+esticado</li>
+<li>na listagem de aplicativos abertos, o PWA aparece como uma instância do Brave
+Browser</li>
+</ul>
+<p><strong>Google Chrome</strong>: Experiência de uso se aproxima mais de uma experiência de
+app nativo.</p>
+<ul>
+<li>o ícone do app não tem o ícone do navegador</li>
+<li>o app é listado na lista de aplicativos, sendo possível até desinstalá-lo
+como qualquer outro app.</li>
+<li>na listagem de aplicativos abertos, o PWA aparece como como um aplicativo
+nativo</li>
+<li>o ícone tem uma definição melhor, como se o tamanho apropriado tivesse sido
+escolhido</li>
+</ul>
+<p><strong>Firefox</strong>: Não vi ainda</p>
+<p>iOS</p>
+<p>O aplicativo não funcionou no iPhone de uma amiga, mas acho que não é por conta
+da parte de PWA, por que eu nem tinha colocado coisa no projeto referente a isso.</p>
+<h2>Workbox e <code>generateSW</code></h2>
+<ul>
+<li><a href="https://developers.google.com/web/tools/workbox/guides/get-started">Workbox</a></li>
+<li><a href="https://developers.google.com/web/tools/workbox/modules/workbox-cli">generateSW</a></li>
+</ul>
+<p>Gerador de Service Worker de linha de comando. <code>generateSW</code> é limitado para os
+casos:</p>
+<ul>
+<li>You want to precache files.</li>
+<li>You have simple runtime configuration needs (e.g. the configuration allows you to define routes and strategies).</li>
+</ul>
+<p>Mas não sei qual é o escopo do meu futuro caso de uso (PWA pra controlar a fita
+de LED), mas deve ser o suficiente.</p>
+<h2>Snowpack + TypeScript + Workbox</h2>
+<p>Consegui fazer deploy de um PWA.</p>
+<p>Com o Workbox, vi que a parte PWA "só funciona" em produção quando estão
+sendo servidos os arquivos do diretório de build. O aplicativo é instalável
+quando o app está hospedado no GitHub Pages ou na Vercel, mas não consegui
+reproduzir isso em ambiente de desenvolvimento (localhost). O Snowpack reclama
+de não encontrar o <code>sw.js</code>, o que faz sentido já que ele é gerado pelo Workbox
+no diretório de build.</p>
+<p>É possível visitá-lo <a href="https://vercel.com/yudi-azvd/bedtime-calculator">aqui</a>.
+Hospedado na Vercel por enquanto.</p>
+<p>Ainda não consegui montar um ambiente depuração com VSCode.</p>
+<h2>Webpack + TypeScript + Workbox</h2>
+<p>Nem toquei ainda, mas o Webpack tem uma
+<a href="https://webpack.js.org/guides/progressive-web-application/">página</a> pra isso. Também usam Workbox.</p>
+<p>Meu chute é que o ambiente de desenvolvimento com VSCode vai ser mais fácil.</p>
+<h2>Parcel + TypeScript</h2>
+<p>Não consegui fazer o service worker funcionar sem nenhuma ferramenta adicional.
+Aparentemente larguei cedo demais, por que acho que dava pra encaixar com WorkBox
+também, segundo esse <a href="https://www.bha.ee/how-to-make-your-parcel-js-app-progressive/">post</a>. Nada muito diferente do Snowpack
+e Webpack. Esse post usa React.</p>
+<h2>Svelte</h2>
+<p>Aparentemente tem uma integração mais "seamless" com service workers.</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// service-worker.js</span>
+<span class="hljs-keyword">import</span> { build, files, timestamp } <span class="hljs-keyword">from</span> <span class="hljs-string">'$service-worker'</span>
+</code></pre>
+<p><a href="https://blog.logrocket.com/building-a-pwa-with-svelte/">Building a PWA with Svelte (Svelte, SvelteKit e Sapper)</a>,
+LogRocket</p>
+<p><a href="https://dev.to/100lvlmaster/create-a-pwa-with-sveltekit-svelte-a36">Create a PWA with Sveltekit</a></p>
+<h2>Referências</h2>
+<p>(Indicar o repositório inicial onde tem vários links)</p></div><button class="sc-iqseJM fXEOMs"><a>← Voltar</a></button></article></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"post":{"id":"2022-01-05-@estudos-em-pwa","title":"Estudos em PWA","date":"2022-01-05","tags":["pwa"],"excerpt":"Compilado dos meus achados sobre PWA revirando a internet","content":"\u003ch2\u003ePWA\u003c/h2\u003e\n\u003cp\u003e\u003cstrong\u003eSuper útil\u003c/strong\u003e: \u003ca href=\"https://github.com/onderceylan/pwa-asset-generator\"\u003ePWA asset generator\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eÉ possível disponibilizar o PWA em lojas de aplicativos.\u003c/p\u003e\n\u003cp\u003e\u003ca href=\"https://www.youtube.com/watch?v=sFsRylCQblw\"\u003eProgressive Web Apps in 100 Seconds\u003c/a\u003e, Fireship\u003c/p\u003e\n\u003cp\u003e\u003ca href=\"https://www.youtube.com/watch?v=ppwagkhrZJs\"\u003e7 Web Features You Didn’t Know Existed\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eTestei instalar o PWA no meu celular (Samsung Galaxy S20 FE) por dois navegadores:\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eBrave Browser\u003c/strong\u003e:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eO ícone do navegador aparece no ícone do app.\u003c/li\u003e\n\u003cli\u003eA resolução do ícone estava um pouco a desejar, como se tivesse sido um pouco\nesticado\u003c/li\u003e\n\u003cli\u003ena listagem de aplicativos abertos, o PWA aparece como uma instância do Brave\nBrowser\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003eGoogle Chrome\u003c/strong\u003e: Experiência de uso se aproxima mais de uma experiência de\napp nativo.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eo ícone do app não tem o ícone do navegador\u003c/li\u003e\n\u003cli\u003eo app é listado na lista de aplicativos, sendo possível até desinstalá-lo\ncomo qualquer outro app.\u003c/li\u003e\n\u003cli\u003ena listagem de aplicativos abertos, o PWA aparece como como um aplicativo\nnativo\u003c/li\u003e\n\u003cli\u003eo ícone tem uma definição melhor, como se o tamanho apropriado tivesse sido\nescolhido\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cstrong\u003eFirefox\u003c/strong\u003e: Não vi ainda\u003c/p\u003e\n\u003cp\u003eiOS\u003c/p\u003e\n\u003cp\u003eO aplicativo não funcionou no iPhone de uma amiga, mas acho que não é por conta\nda parte de PWA, por que eu nem tinha colocado coisa no projeto referente a isso.\u003c/p\u003e\n\u003ch2\u003eWorkbox e \u003ccode\u003egenerateSW\u003c/code\u003e\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://developers.google.com/web/tools/workbox/guides/get-started\"\u003eWorkbox\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://developers.google.com/web/tools/workbox/modules/workbox-cli\"\u003egenerateSW\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eGerador de Service Worker de linha de comando. \u003ccode\u003egenerateSW\u003c/code\u003e é limitado para os\ncasos:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eYou want to precache files.\u003c/li\u003e\n\u003cli\u003eYou have simple runtime configuration needs (e.g. the configuration allows you to define routes and strategies).\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eMas não sei qual é o escopo do meu futuro caso de uso (PWA pra controlar a fita\nde LED), mas deve ser o suficiente.\u003c/p\u003e\n\u003ch2\u003eSnowpack + TypeScript + Workbox\u003c/h2\u003e\n\u003cp\u003eConsegui fazer deploy de um PWA.\u003c/p\u003e\n\u003cp\u003eCom o Workbox, vi que a parte PWA \"só funciona\" em produção quando estão\nsendo servidos os arquivos do diretório de build. O aplicativo é instalável\nquando o app está hospedado no GitHub Pages ou na Vercel, mas não consegui\nreproduzir isso em ambiente de desenvolvimento (localhost). O Snowpack reclama\nde não encontrar o \u003ccode\u003esw.js\u003c/code\u003e, o que faz sentido já que ele é gerado pelo Workbox\nno diretório de build.\u003c/p\u003e\n\u003cp\u003eÉ possível visitá-lo \u003ca href=\"https://vercel.com/yudi-azvd/bedtime-calculator\"\u003eaqui\u003c/a\u003e.\nHospedado na Vercel por enquanto.\u003c/p\u003e\n\u003cp\u003eAinda não consegui montar um ambiente depuração com VSCode.\u003c/p\u003e\n\u003ch2\u003eWebpack + TypeScript + Workbox\u003c/h2\u003e\n\u003cp\u003eNem toquei ainda, mas o Webpack tem uma\n\u003ca href=\"https://webpack.js.org/guides/progressive-web-application/\"\u003epágina\u003c/a\u003e pra isso. Também usam Workbox.\u003c/p\u003e\n\u003cp\u003eMeu chute é que o ambiente de desenvolvimento com VSCode vai ser mais fácil.\u003c/p\u003e\n\u003ch2\u003eParcel + TypeScript\u003c/h2\u003e\n\u003cp\u003eNão consegui fazer o service worker funcionar sem nenhuma ferramenta adicional.\nAparentemente larguei cedo demais, por que acho que dava pra encaixar com WorkBox\ntambém, segundo esse \u003ca href=\"https://www.bha.ee/how-to-make-your-parcel-js-app-progressive/\"\u003epost\u003c/a\u003e. Nada muito diferente do Snowpack\ne Webpack. Esse post usa React.\u003c/p\u003e\n\u003ch2\u003eSvelte\u003c/h2\u003e\n\u003cp\u003eAparentemente tem uma integração mais \"seamless\" com service workers.\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"hljs language-js\"\u003e\u003cspan class=\"hljs-comment\"\u003e// service-worker.js\u003c/span\u003e\n\u003cspan class=\"hljs-keyword\"\u003eimport\u003c/span\u003e { build, files, timestamp } \u003cspan class=\"hljs-keyword\"\u003efrom\u003c/span\u003e \u003cspan class=\"hljs-string\"\u003e'$service-worker'\u003c/span\u003e\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003ca href=\"https://blog.logrocket.com/building-a-pwa-with-svelte/\"\u003eBuilding a PWA with Svelte (Svelte, SvelteKit e Sapper)\u003c/a\u003e,\nLogRocket\u003c/p\u003e\n\u003cp\u003e\u003ca href=\"https://dev.to/100lvlmaster/create-a-pwa-with-sveltekit-svelte-a36\"\u003eCreate a PWA with Sveltekit\u003c/a\u003e\u003c/p\u003e\n\u003ch2\u003eReferências\u003c/h2\u003e\n\u003cp\u003e(Indicar o repositório inicial onde tem vários links)\u003c/p\u003e"}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"2022-01-05-@estudos-em-pwa"},"buildId":"pl2fLR_pka1EW0PNZk4aU","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
