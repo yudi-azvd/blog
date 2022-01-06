@@ -8,7 +8,7 @@ export default function GoBack() {
   return (
     <>
       <Button onClick={() => router.back()}>
-        <a>← Voltar</a>
+        <a>‹ Voltar</a>
       </Button>
     </>
   )
