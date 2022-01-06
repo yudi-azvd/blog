@@ -17,7 +17,6 @@ const Blog: NextPage<Props> = ({ allPosts }: Props) => {
       <Head>
         <title>Yudi Yamane</title>
         <meta name="description" content="Blog do Yudi" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Container>

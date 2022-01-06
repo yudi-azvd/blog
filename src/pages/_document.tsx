@@ -43,6 +43,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="description" content="Blog Yudi Yamane" />
+          <link rel="icon" href="/blog/favicon.ico" />
         </Head>
 
         <body>
