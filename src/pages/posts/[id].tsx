@@ -3,9 +3,14 @@ import Head from 'next/head'
 
 import { Container, MarkdownContent, PostDetails } from '@/styles/pages/post'
 
-import Post from '../../types/post'
-import { getAllPostsIds, getPostById } from '../../lib/postFunctions'
+import Post from '@/types/post'
+import {
+  getAllDraftsIds,
+  getAllPostsIds,
+  getPostById,
+} from '@/lib/postFunctions'
 import GoBack from '@/components/GoBack'
+import { isDevelopmentEnvironment } from '@/lib/util'
 
 interface Params {
   params: {
@@ -23,10 +28,20 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const ids = getAllPostsIds()
-  const paths = ids.map((id) => ({
-    params: { id },
+  const postsIds = getAllPostsIds() // não conta rascunhos
+  const postsPaths = postsIds.map((id) => ({
+    params: { id: id.replace(/^.*\d{4}-\d{2}-\d{2}-/, '') },
   }))
+
+  const draftsIds = getAllDraftsIds()
+  const draftsPaths = draftsIds.map((id) => ({
+    params: { id: id.replace(/^.*\d{4}-\d{2}-\d{2}-/, '') },
+  }))
+
+  let paths = [...postsPaths]
+  if (isDevelopmentEnvironment()) {
+    paths = paths.concat(draftsPaths)
+  }
 
   return {
     paths,

@@ -11,17 +11,51 @@ import { remark } from 'remark'
 
 import Post from '@/types/post'
 import FrontMatterParser from './FrontMatterParser'
+import { isDevelopmentEnvironment } from './util'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
-let filenames = fs.readdirSync(postsDirectory)
+let filenames = getFullFilePaths(postsDirectory)
+filenames = filenames.map((fn) =>
+  fn.substring(fn.indexOf('/posts') + '/posts'.length + 1),
+)
+const drafts = filenames.filter((fn) => fn.indexOf('drafts/') > -1)
 
-// convenção temporária: arquivos que contém "@d" (draft) não aparecem em produção
-// Usando Vercel como ambiente de stage, é onde os rascunhos vão aparecer
-if (process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV !== 'TRUE')
-  filenames = filenames.filter((fn) => !fn.includes('@d'))
+// if (process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV !== 'TRUE')
+filenames = filenames.filter((fn) => !fn.includes('drafts/'))
 
 interface SearchPostsParams {
   filterTag?: string
+}
+
+function getFullFilePaths(directory: string): string[] {
+  const thingsInDirectory = fs
+    .readdirSync(directory)
+    .map((f) => path.join(directory, f))
+  const fullPaths: string[] = []
+  const directories: string[] = []
+
+  for (let i = 0; i < thingsInDirectory.length; i++) {
+    const thing = thingsInDirectory[i]
+
+    if (fs.lstatSync(thing).isDirectory()) {
+      directories.push(thing)
+      fullPaths.push(...getFullFilePaths(thing))
+    } else {
+      fullPaths.push(thing)
+    }
+  }
+
+  return fullPaths
+}
+
+export async function getDrafts(): Promise<Post[]> {
+  const allDrafts = drafts.map(async (filename) => loadPost(filename, false))
+  const draftsResolved = Promise.all(allDrafts)
+  return draftsResolved
+}
+
+export function getAllDraftsIds(): string[] {
+  return drafts.map((fn) => fn.replace(/.md$/, ''))
 }
 
 export async function getSortedPosts(
@@ -56,7 +90,17 @@ export function getAllPostsIds(): string[] {
  * @returns Post com `.content` preenchido
  */
 export async function getPostById(id: string): Promise<Post> {
-  const filename = `${id}.md`
+  // const filename = `${id}.md`
+  // deve ser muito devagar, talvez seja melhor usar algo como dicionário
+
+  let filename = filenames.find((f) => f.endsWith(`${id}.md`)) // `${id}.md`
+
+  if (filename === undefined && isDevelopmentEnvironment())
+    filename = drafts.find((f) => f.endsWith(`${id}.md`))
+
+  if (filename === undefined)
+    throw new Error(`File not found. Given slug: '${id}'`)
+
   const post = await loadPost(filename, true)
   // TODO: Abstrair remark em uma função/classe
   const processedContent = await remark()
@@ -94,7 +138,7 @@ export async function getPostById(id: string): Promise<Post> {
 
 async function loadPost(filename: string, withContent = false): Promise<Post> {
   let dateFromFilename = ''
-  const dateMatch = filename.match(/^-?(\d{4}-\d{2}-\d{2})/)
+  const dateMatch = filename.match(/(\d{4}-\d{2}-\d{2})/)
   if (dateMatch) dateFromFilename = dateMatch[1]
 
   const fullpath = path.join(postsDirectory, filename)

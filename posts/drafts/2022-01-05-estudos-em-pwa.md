@@ -1,5 +1,5 @@
 ---
-title: Estudos em PWA
+title: Rascunho Estudos em PWA
 date: '2022-01-05'
 tags: ['pwa']
 excerpt: 'Compilado dos meus achados sobre PWA revirando a internet'

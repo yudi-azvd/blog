@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from '../components/Link'
 
+import Link from '../components/Link'
 import { getSortedPosts } from '../lib/postFunctions'
 import Post from '../types/post'
 
@@ -11,7 +11,7 @@ interface Props {
   allPosts: Post[]
 }
 
-const Blog: NextPage<Props> = ({ allPosts }: Props) => {
+const Blog: NextPage<Props> = ({ allPosts }) => {
   return (
     <>
       <Head>
@@ -28,7 +28,12 @@ const Blog: NextPage<Props> = ({ allPosts }: Props) => {
             {allPosts.map((post) => (
               <PostItem key={`${post.date}-${post.title}`}>
                 <h2 style={{ fontWeight: 'normal' }}>
-                  <Link href={`/posts/${post.id}`}>
+                  <Link
+                    href={`/posts/${post.id.replace(
+                      /^.*\d{4}-\d{2}-\d{2}-/,
+                      '',
+                    )}`}
+                  >
                     <a>{post.title}</a>
                   </Link>
                 </h2>

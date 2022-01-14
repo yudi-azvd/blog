@@ -59,7 +59,7 @@ export const MarkdownContent = styled.article`
   pre {
     background: var(--color-canvas-subtle);
     overflow: auto;
-    padding: 16px;
+    padding: 16px 4px;
     border-radius: 6px;
     font-size: 12px;
     margin-top: 0;
