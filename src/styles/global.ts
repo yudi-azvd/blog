@@ -69,4 +69,8 @@ export default createGlobalStyle`
   a:hover {
     text-decoration: underline;
   }
+
+  ul, li {
+    list-style: none;
+  }
 `

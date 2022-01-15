@@ -26,7 +26,6 @@ export const Content = styled.main`
 
 export const PostItem = styled.li`
   margin-bottom: 32px;
-  list-style: none;
 
   h2 {
     margin-bottom: 4px;

@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import assert from 'assert'
 
 import rehypeHighlight from 'rehype-highlight'
 import rehypeStringify from 'rehype-stringify'
@@ -137,9 +136,12 @@ export async function getPostById(id: string): Promise<Post> {
 }
 
 async function loadPost(filename: string, withContent = false): Promise<Post> {
-  let dateFromFilename = ''
+  let date = ''
   const dateMatch = filename.match(/(\d{4}-\d{2}-\d{2})/)
-  if (dateMatch) dateFromFilename = dateMatch[1]
+  if (dateMatch) date = dateMatch[1]
+
+  if (isNaN(Date.parse(date)))
+    throw new Error(`Invalid or missing date "${date}" for file "${filename}"`)
 
   const fullpath = path.join(postsDirectory, filename)
   const fileContent = fs.readFileSync(fullpath, 'utf8')
@@ -150,15 +152,11 @@ async function loadPost(filename: string, withContent = false): Promise<Post> {
   const frontMatter = frontMatterParser.getFrontMatter()
   const content = frontMatterParser.getContent()
 
-  assert(
-    dateFromFilename === frontMatter.date,
-    `${dateFromFilename} === ${frontMatter.date}`,
-  )
-
   const id = filename.replace(/\.md$/, '')
   return {
     id,
     ...frontMatter,
+    date,
     content,
   }
 }

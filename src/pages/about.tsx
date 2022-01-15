@@ -22,10 +22,8 @@ export default function About() {
             </p>
             <br />
             <p>
-              <a href="https://github.com/yudi-azvd/yudi-azvd.github.io">
-                Repositório
-              </a>{' '}
-              desse blog no GitHub, feito por{' '}
+              <a href="https://github.com/yudi-azvd/blog">Repositório</a> desse
+              blog no GitHub, feito por{' '}
               <a href="https://github.com/yudi-azvd">Yudi Yamane</a>.
             </p>
           </div>

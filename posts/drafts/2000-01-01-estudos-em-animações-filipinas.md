@@ -1,5 +1,5 @@
 ---
-title: estudos-em-animações-filipinas
+title: estudos em animações filipinas
 date: '2022-01-05'
 tags: ['animação']
 excerpt: estudos-em-animações-filipinas

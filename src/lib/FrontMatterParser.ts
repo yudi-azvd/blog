@@ -6,15 +6,6 @@ const schema = yup.object().shape({
   title: yup.string().required(),
   excerpt: yup.string().required(),
   tags: yup.array().of(yup.string()).required(),
-  date: yup
-    .string()
-    .required()
-    .test(
-      'test-date',
-      // eslint-disable-next-line no-template-curly-in-string
-      'Data deve estar em formato ISO. Data: ${value}',
-      (value = '') => !isNaN(Date.parse(value)),
-    ),
 })
 
 class FrontMatterParser {
@@ -43,7 +34,7 @@ class FrontMatterParser {
         const errorMessage = error.inner
           .map((err) => err.message)
           .join('\n')
-          .concat(` from ${this.frontMatter.date}-${this.frontMatter.title}.md`)
+          .concat(` from file ${this.frontMatter.title}.md`)
 
         throw errorMessage
       }
