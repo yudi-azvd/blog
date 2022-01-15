@@ -3,7 +3,6 @@ import { GetStaticProps, NextPage } from 'next'
 import { getDrafts } from '@/lib/postFunctions'
 import Link from '@/components/Link'
 import Post from '@/types/post'
-import GoBack from '@/components/GoBack'
 import { Container, Content } from '@/styles/pages/drafts'
 
 interface Props {
