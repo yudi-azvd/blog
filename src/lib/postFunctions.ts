@@ -23,7 +23,7 @@ const drafts = filenames.filter((fn) => fn.indexOf('drafts/') > -1)
 filenames = filenames.filter((fn) => !fn.includes('drafts/'))
 
 if (!isDevelopmentEnvironment())
-  filenames = filenames.filter((fn) => fn.includes('tests/'))
+  filenames = filenames.filter((fn) => !fn.includes('tests/'))
 
 interface SearchPostsParams {
   filterTag?: string
