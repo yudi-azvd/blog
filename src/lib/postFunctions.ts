@@ -11,6 +11,7 @@ import { remark } from 'remark'
 import Post from '@/types/post'
 import FrontMatterParser from './FrontMatterParser'
 import { isDevelopmentEnvironment } from './util'
+import slugify from './slugify'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 let filenames = getFullFilePaths(postsDirectory)
@@ -156,10 +157,18 @@ async function loadPost(filename: string, withContent = false): Promise<Post> {
   const content = frontMatterParser.getContent()
 
   const id = filename.replace(/\.md$/, '')
-  return {
+  const post: Post = {
     id,
-    ...frontMatter,
+    slug: slugify(id),
     date,
+    dateFormatted: new Date(date).toLocaleDateString('pt-BR', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    }),
     content,
+    ...frontMatter,
   }
+
+  return post
 }

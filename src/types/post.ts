@@ -6,8 +6,9 @@ export interface PostMeta {
 
 interface Post extends PostMeta {
   id: string
-  dateFormatted?: string
+  slug: string
   date: string
+  dateFormatted: string
   content: string
 }
 

@@ -44,8 +44,8 @@ export default function TagPage({ tag, posts }: Props) {
 
           <ul>
             {posts.map((p) => (
-              <li key={p.id}>
-                <Link href={`/posts/${p.id}`}>
+              <li key={p.slug}>
+                <Link href={`/posts/${p.slug}`}>
                   <a>{p.title}</a>
                 </Link>
               </li>

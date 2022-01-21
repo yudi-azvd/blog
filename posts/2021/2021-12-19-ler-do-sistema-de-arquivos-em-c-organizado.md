@@ -1,6 +1,5 @@
 ---
 title: Como ler do sistema de arquivos de um jeito organizado em C
-date: '2021-12-19'
 tags: ['c', 'sistema-de-arquivos']
 excerpt: Usando getcwd, strcat e strstr
 ---
