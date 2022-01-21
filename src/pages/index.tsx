@@ -26,21 +26,16 @@ const Blog: NextPage<Props> = ({ allPosts }) => {
 
           <ul>
             {allPosts.map((post) => (
-              <PostItem key={`${post.date}-${post.title}`}>
+              <PostItem key={`${post.slug}`}>
                 <h2 style={{ fontWeight: 'normal' }}>
-                  <Link
-                    href={`/posts/${post.id.replace(
-                      /^.*\d{4}-\d{2}-\d{2}-/,
-                      '',
-                    )}`}
-                  >
+                  <Link href={`/posts/${post.slug}`}>
                     <a>{post.title}</a>
                   </Link>
                 </h2>
 
                 <p> {post.excerpt} </p>
                 <PostMeta>
-                  <time> {post.date} </time>
+                  <time> {post.dateFormatted} </time>
                   {post.tags.length > 0 ? (
                     <small> {post.tags.join(', ')}</small>
                   ) : (

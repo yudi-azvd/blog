@@ -23,7 +23,7 @@ export default function Tags(props: TagsProps) {
             <ul>
               {props.tags.map((t, index) => (
                 <li key={`${index}-${t}`}>
-                  <Link href={`/tags/${t}`}>
+                  <Link href={`tags/${t}`}>
                     <a>{t}</a>
                   </Link>
                 </li>

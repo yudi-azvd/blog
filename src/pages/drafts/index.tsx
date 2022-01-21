@@ -18,10 +18,8 @@ const Drafts: NextPage<Props> = ({ drafts }) => {
 
           <ul>
             {drafts.map((d) => (
-              <li key={d.id}>
-                <Link
-                  href={`/posts/${d.id.replace(/^.*\d{4}-\d{2}-\d{2}-/, '')}`}
-                >
+              <li key={d.slug}>
+                <Link href={`/posts/${d.slug}`}>
                   <a> {d.title} </a>
                 </Link>
               </li>

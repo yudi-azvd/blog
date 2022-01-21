@@ -11,6 +11,7 @@ import {
 } from '@/lib/postFunctions'
 import GoBack from '@/components/GoBack'
 import { isDevelopmentEnvironment } from '@/lib/util'
+import slugify from '@/lib/slugify'
 
 interface Params {
   params: {
@@ -29,13 +30,14 @@ export async function getStaticProps({ params }: Params) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const postsIds = getAllPostsIds() // não conta rascunhos
+
   const postsPaths = postsIds.map((id) => ({
-    params: { id: id.replace(/^.*\d{4}-\d{2}-\d{2}-/, '') },
+    params: { id: slugify(id) },
   }))
 
   const draftsIds = getAllDraftsIds()
   const draftsPaths = draftsIds.map((id) => ({
-    params: { id: id.replace(/^.*\d{4}-\d{2}-\d{2}-/, '') },
+    params: { id: slugify(id) },
   }))
 
   let paths = [...postsPaths]
@@ -71,7 +73,7 @@ export default function PostPage({ post }: PostProps) {
 
           <h1> {post.title} </h1>
           <PostDetails>
-            <time> {post.date} </time>
+            <time> {post.dateFormatted} </time>
             {post.tags.length > 0 ? (
               <small> {post.tags.join(', ')}</small>
             ) : (
