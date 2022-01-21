@@ -1,7 +1,7 @@
 #/bin/bash
 
 # Dependências
-# https://imagemagick.org/index.php
+# convert do imagemagick: https://imagemagick.org/index.php
 
 # https://superuser.com/questions/227736/how-do-i-convert-a-png-into-a-ico
 sizes="16 32 48 128 256"

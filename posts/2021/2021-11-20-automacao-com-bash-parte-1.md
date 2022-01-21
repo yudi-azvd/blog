@@ -1,7 +1,6 @@
 ---
 title: 'Automação com Bash, parte 1'
 excerpt: 'Básico de watch, ps e grep'
-date: '2021-11-20'
 tags: ['automação', 'bash', 'série-automação']
 ---
 
