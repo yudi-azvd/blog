@@ -15,12 +15,12 @@ import slugify from '@/lib/slugify'
 
 interface Params {
   params: {
-    id: string
+    slug: string
   }
 }
 
 export async function getStaticProps({ params }: Params) {
-  const post = await getPostById(params.id)
+  const post = await getPostById(params.slug)
   return {
     props: {
       post,
@@ -32,12 +32,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const postsIds = getAllPostsIds() // não conta rascunhos
 
   const postsPaths = postsIds.map((id) => ({
-    params: { id: slugify(id) },
+    params: { slug: slugify(id) },
   }))
 
   const draftsIds = getAllDraftsIds()
   const draftsPaths = draftsIds.map((id) => ({
-    params: { id: slugify(id) },
+    params: { slug: slugify(id) },
   }))
 
   let paths = [...postsPaths]
