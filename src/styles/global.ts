@@ -17,7 +17,7 @@ export default createGlobalStyle`
     --color-header-bg: #161b22;
     --color-header-text: rgba(240, 246, 252, 0.7);
     --color-header-logo: #f0f6fc;
-    }
+  }
 
   * {
     margin: 0;
