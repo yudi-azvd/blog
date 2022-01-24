@@ -1,0 +1,1 @@
+{"pageProps":{"tag":"c","posts":[{"id":"2021/2021-12-19-ler-do-sistema-de-arquivos-em-c-organizado","slug":"ler-do-sistema-de-arquivos-em-c-organizado","date":"2021-12-19","dateFormatted":"19 dez 2021","content":"","title":"Como ler do sistema de arquivos de um jeito organizado em C","tags":["c","sistema-de-arquivos"],"excerpt":"Usando getcwd, strcat e strstr"}]},"__N_SSG":true}

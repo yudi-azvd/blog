@@ -1,27 +1,31 @@
-<!DOCTYPE html><html lang="pt"><head><meta charSet="utf-8"/><meta name="description" content="Blog Yudi Yamane"/><link rel="icon" href="/blog/favicon.ico"/><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title> Tag: bash </title><meta name="next-head-count" content="3"/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/blog/_next/static/chunks/polyfills-a40ef1678bae11e696dba45124eadd70.js"></script><script src="/blog/_next/static/chunks/webpack-d5cba7b40139ad0e.js" defer=""></script><script src="/blog/_next/static/chunks/framework-91d7f78b5b4003c8.js" defer=""></script><script src="/blog/_next/static/chunks/main-c49c0467e5b05e2b.js" defer=""></script><script src="/blog/_next/static/chunks/pages/_app-181379fbc006c01e.js" defer=""></script><script src="/blog/_next/static/chunks/pages/tags/%5Btag%5D-37010ce88b8689fd.js" defer=""></script><script src="/blog/_next/static/2_s43DbMtFRra0UZGLmk7/_buildManifest.js" defer=""></script><script src="/blog/_next/static/2_s43DbMtFRra0UZGLmk7/_ssgManifest.js" defer=""></script><script src="/blog/_next/static/2_s43DbMtFRra0UZGLmk7/_middlewareManifest.js" defer=""></script><style data-styled="" data-styled-version="5.3.3">:root{font-size:16px;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#484f58;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-danger-fg:#f85149;--color-header-bg:#161b22;--color-header-text:rgba(240,246,252,0.7);--color-header-logo:#f0f6fc;}/*!sc*/
+<!DOCTYPE html><html lang="pt"><head><meta charSet="utf-8"/><meta name="description" content="Blog Yudi Yamane"/><link rel="icon" href="/blog/favicon.ico"/><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title> Tag: bash </title><meta name="next-head-count" content="3"/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/blog/_next/static/chunks/polyfills-a40ef1678bae11e696dba45124eadd70.js"></script><script src="/blog/_next/static/chunks/webpack-d5cba7b40139ad0e.js" defer=""></script><script src="/blog/_next/static/chunks/framework-91d7f78b5b4003c8.js" defer=""></script><script src="/blog/_next/static/chunks/main-c49c0467e5b05e2b.js" defer=""></script><script src="/blog/_next/static/chunks/pages/_app-c7b0248c55fdec2b.js" defer=""></script><script src="/blog/_next/static/chunks/pages/tags/%5Btag%5D-0688c63f100f1a84.js" defer=""></script><script src="/blog/_next/static/36H31_pR622ZjobCAATs2/_buildManifest.js" defer=""></script><script src="/blog/_next/static/36H31_pR622ZjobCAATs2/_ssgManifest.js" defer=""></script><script src="/blog/_next/static/36H31_pR622ZjobCAATs2/_middlewareManifest.js" defer=""></script><style data-styled="" data-styled-version="5.3.3">:root{font-size:16px;--color-background:#1a1a1a;--color-background-complementary:#2e2e2e;--color-highlight:#fff;--color-primary:rgba(255,255,255,.84);--color-primary:rgba(255,255,255,1);--color-secondary:rgba(255,255,255,.6);--color-muted:rgba(255,255,255,.5);--color-muted-highlight:rgba(255,255,255,.7);--color-code-background:#0e0e0e;--color-code-background-complementary:#2e2e2e;}/*!sc*/
 *{margin:0;padding:0;box-sizing:border-box;outline:0;}/*!sc*/
 html{overflow-y:overlay;}/*!sc*/
-body{background:var(--color-canvas-default);color:var(--color-fg-default);-webkit-font-smoothing:antialiased;}/*!sc*/
+body{line-height:1.5;background:var(--color-background);color:var(--color-primary);-webkit-font-smoothing:antialiased;}/*!sc*/
+body::-webkit-scrollbar{width:12px;margin-right:4px;}/*!sc*/
+body::-webkit-scrollbar-track{background:transparent;}/*!sc*/
+body::-webkit-scrollbar-thumb{background:var(--color-code-background-complementary);border-radius:10px;}/*!sc*/
 body,input,button{font-family:Roboto,sans-serif;font-size:16px;}/*!sc*/
-h1,h2,h3,h4,h5,h6,strong{font-weight:bold;}/*!sc*/
+h1,h2,h3,h4,h5,h6,strong{font-weight:bold;color:var(--color-highlight);}/*!sc*/
 h1{font-size:2.25rem;}/*!sc*/
 h2{font-size:1.5rem;}/*!sc*/
 h3{font-size:1rem;}/*!sc*/
 button{cursor:pointer;}/*!sc*/
-a{color:var(--color-accent-fg);-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
-a:hover{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+a{color:var(--color-secondary);-webkit-text-decoration:underline;text-decoration:underline;-webkit-transition:0.2s;transition:0.2s;}/*!sc*/
+a:hover{-webkit-text-decoration:underline;text-decoration:underline;color:var(--color-highlight);}/*!sc*/
 ul,li{list-style:none;}/*!sc*/
-data-styled.g1[id="sc-global-kTYXXR1"]{content:"sc-global-kTYXXR1,"}/*!sc*/
-.bWbqvd{background:var(--color-header-bg);color:var(--color-header-logo);height:64px;width:100vw;}/*!sc*/
-data-styled.g2[id="sc-bdvvtL"]{content:"bWbqvd,"}/*!sc*/
-.dapBTY{font-size:1.2rem;width:90%;height:100%;margin:0 auto;}/*!sc*/
-.dapBTY ul{height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:left;-webkit-justify-content:left;-ms-flex-pack:left;justify-content:left;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;list-style:none;}/*!sc*/
-.dapBTY ul li + li{margin-left:32px;}/*!sc*/
-.dapBTY ul li a{color:var(--color-header-logo);font-weight:600;-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
-@media (min-width:650px){.dapBTY{max-width:calc(800px - (30px * 2));}}/*!sc*/
-data-styled.g3[id="sc-gsDKAQ"]{content:"dapBTY,"}/*!sc*/
-.jremTw{background:transparent;display:inline;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;border:none;}/*!sc*/
-data-styled.g16[id="sc-egiyK"]{content:"jremTw,"}/*!sc*/
+data-styled.g1[id="sc-global-lkRZuY1"]{content:"sc-global-lkRZuY1,"}/*!sc*/
+.cfTPtW{background:transparent;color:var(--color-primary);height:90px;width:100vw;}/*!sc*/
+data-styled.g2[id="sc-bdvvtL"]{content:"cfTPtW,"}/*!sc*/
+.cyxuZC{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;font-size:1.25rem;width:90%;height:100%;margin:0 auto;}/*!sc*/
+.cyxuZC ul{height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:left;-webkit-justify-content:left;-ms-flex-pack:left;justify-content:left;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;list-style:none;}/*!sc*/
+.cyxuZC ul li + li{margin-left:32px;}/*!sc*/
+.cyxuZC ul li a{color:var(--color-highlight);font-weight:600;-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+@media (min-width:650px){.cyxuZC{max-width:calc(800px - (30px * 2));}}/*!sc*/
+data-styled.g3[id="sc-gsDKAQ"]{content:"cyxuZC,"}/*!sc*/
+.eknjSe{background:transparent;display:inline;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;border:none;}/*!sc*/
+.eknjSe a{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+data-styled.g16[id="sc-egiyK"]{content:"eknjSe,"}/*!sc*/
 .dBwXVC{width:100vw;max-width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}/*!sc*/
 data-styled.g17[id="sc-bqiRlB"]{content:"dBwXVC,"}/*!sc*/
 .hmasjj{margin:8% auto;width:90%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}/*!sc*/
@@ -30,4 +34,4 @@ data-styled.g17[id="sc-bqiRlB"]{content:"dBwXVC,"}/*!sc*/
 .hmasjj li{list-style:none;margin-bottom:16px;}/*!sc*/
 @media (min-width:650px){.hmasjj{max-width:calc(800px - (30px * 2));}}/*!sc*/
 data-styled.g18[id="sc-ksdxgE"]{content:"hmasjj,"}/*!sc*/
-</style></head><body><div id="__next"><nav class="sc-bdvvtL bWbqvd"><div class="sc-gsDKAQ dapBTY"><ul><li><a href="/blog">Blog</a></li><li><a href="/blog/tags">Tags</a></li><li><a href="/blog/about">Sobre</a></li></ul></div></nav><div class="sc-bqiRlB dBwXVC"><main class="sc-ksdxgE hmasjj"><button class="sc-egiyK jremTw"><a>‹ Voltar</a></button><h1> Posts sobre <!-- -->bash<!-- --> </h1><ul><li><a href="/blog/posts/automacao-com-bash-parte-1">Automação com Bash, parte 1</a></li></ul><button class="sc-egiyK jremTw"><a>‹ Voltar</a></button></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"tag":"bash","posts":[{"id":"2021/2021-11-20-automacao-com-bash-parte-1","slug":"automacao-com-bash-parte-1","date":"2021-11-20","dateFormatted":"20 de nov. de 2021","content":"","title":"Automação com Bash, parte 1","excerpt":"Básico de watch, ps e grep","tags":["automação","bash","série-automação"]}]},"__N_SSG":true},"page":"/tags/[tag]","query":{"tag":"bash"},"buildId":"2_s43DbMtFRra0UZGLmk7","assetPrefix":"/blog","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
+</style></head><body><div id="__next"><nav class="sc-bdvvtL cfTPtW"><div class="sc-gsDKAQ cyxuZC"><a href="/blog"><img src="/blog/logo.png" alt="logo" width="40" height="40"/></a><ul><li><a href="/blog/tags">Tags</a></li><li><a href="/blog/about">Sobre</a></li></ul></div></nav><div class="sc-bqiRlB dBwXVC"><main class="sc-ksdxgE hmasjj"><button class="sc-egiyK eknjSe"><a>‹ Voltar</a></button><h1> Posts sobre <!-- -->bash<!-- --> </h1><ul><li><a href="/blog/posts/automacao-com-bash-parte-1">Automação com Bash, parte 1</a></li></ul><button class="sc-egiyK eknjSe"><a>‹ Voltar</a></button></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"tag":"bash","posts":[{"id":"2021/2021-11-20-automacao-com-bash-parte-1","slug":"automacao-com-bash-parte-1","date":"2021-11-20","dateFormatted":"20 nov 2021","content":"","title":"Automação com Bash, parte 1","excerpt":"Básico de watch, ps e grep","tags":["automação","bash","série-automação"]}]},"__N_SSG":true},"page":"/tags/[tag]","query":{"tag":"bash"},"buildId":"36H31_pR622ZjobCAATs2","assetPrefix":"/blog","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
