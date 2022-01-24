@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import { Container, Content } from './style'
 
 import Link from '@/components/Link'
@@ -12,7 +10,8 @@ export default function Header() {
         <Content>
           <Link href="/">
             <a>
-              <Image src="/blog/logo.png" alt="logo" width={40} height={40} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/logo.png" alt="logo" width={40} height={40} />
             </a>
           </Link>
           <ul>
