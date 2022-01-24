@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { Container, Content } from './style'
 
 import Link from '@/components/Link'
@@ -8,12 +10,12 @@ export default function Header() {
     <>
       <Container>
         <Content>
+          <Link href="/">
+            <a>
+              <Image src="/blog/logo.png" alt="logo" width={40} height={40} />
+            </a>
+          </Link>
           <ul>
-            <li>
-              <Link href="/">
-                <a>Blog</a>
-              </Link>
-            </li>
             <li>
               <Link href="/tags">
                 <a>Tags</a>
@@ -28,7 +30,7 @@ export default function Header() {
             {isDevelopmentEnvironment() && (
               <li>
                 <Link href="/drafts">
-                  <a>Rascunhos</a>
+                  <a>Drafts</a>
                 </Link>
               </li>
             )}

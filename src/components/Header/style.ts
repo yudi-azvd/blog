@@ -1,14 +1,17 @@
 import styled from 'styled-components'
 
 export const Container = styled.nav`
-  background: var(--color-header-bg);
-  color: var(--color-header-logo);
-  height: 64px;
+  background: transparent;
+  color: var(--color-primary);
+  height: 90px;
   width: 100vw;
 `
 
 export const Content = styled.div`
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.25rem;
   width: 90%;
   height: 100%;
   margin: 0 auto;
@@ -25,7 +28,7 @@ export const Content = styled.div`
     }
 
     li a {
-      color: var(--color-header-logo);
+      color: var(--color-highlight);
       font-weight: 600;
       text-decoration: none;
     }

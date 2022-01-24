@@ -161,11 +161,14 @@ async function loadPost(filename: string, withContent = false): Promise<Post> {
     id,
     slug: slugify(id),
     date,
-    dateFormatted: new Date(date).toLocaleDateString('pt-BR', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    }),
+    dateFormatted: new Date(date)
+      .toLocaleDateString('pt-BR', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
+      .replace(/ de /g, ' ')
+      .replace(/\./, ''),
     content,
     ...frontMatter,
   }

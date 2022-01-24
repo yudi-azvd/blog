@@ -8,7 +8,7 @@ sizes="16 32 48 128 256"
 
 for size in $sizes
 do
-  convert design-stuff/blog-logo.png -scale "$size" -strip design-stuff/logo@"$size".png
+  convert design-stuff/logo.png -scale "$size" -strip design-stuff/logo@"$size".png
 done
 
 convert design-stuff/logo@* public/favicon.ico
