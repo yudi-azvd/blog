@@ -29,23 +29,52 @@ export const PostItem = styled.li`
 
   h2 {
     margin-bottom: 4px;
-  }
 
-  p {
-    margin-bottom: 4px;
+    a {
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      -webkit-text-decoration-color: transparent;
+      -moz-text-decoration-color: transparent;
+
+      transition: 0.2s;
+      color: var(--color-primary);
+      color: var(--color-highlight);
+
+      &:hover {
+        text-decoration-color: var(--color-primary);
+        -webkit-text-decoration-color: var(--color-primary);
+        -moz-text-decoration-color: var(--color-primary);
+      }
+    }
   }
 `
 
 export const PostMeta = styled.div`
-  color: var(--color-fg-muted);
+  color: var(--color-muted);
   display: block;
 
+  p,
   time,
-  small {
-    font-size: 0.8em;
+  span {
+    transition: color 0.2s;
   }
 
-  small {
+  // Quando PostItem tiver :hover, faça PostMeta ter os estilos:
+  ${PostItem}:hover & {
+    p,
+    span,
+    time {
+      color: var(--color-muted-highlight);
+    }
+  }
+
+  p {
+    margin-bottom: 4px;
+    color: var(--color-muted);
+  }
+
+  span {
     margin-left: 8px;
     position: relative;
 
@@ -57,8 +86,7 @@ export const PostMeta = styled.div`
       top: 5%;
       width: 1px;
       height: 1em;
-      background: var(--color-fg-muted);
-      color: var(--color-fg-muted);
+      background: var(--color-muted);
     }
   }
 `

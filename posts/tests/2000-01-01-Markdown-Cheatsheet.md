@@ -1,5 +1,5 @@
 ---
-title: 'TESTE Markdown cheatseet'
+title: 'Teste Markdown cheatseet'
 excerpt: 'Post com vários elementos de markdown e HTML'
 tags: ['markdown-reference']
 ---

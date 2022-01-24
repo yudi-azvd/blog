@@ -33,11 +33,11 @@ const Blog: NextPage<Props> = ({ allPosts }) => {
                   </Link>
                 </h2>
 
-                <p> {post.excerpt} </p>
                 <PostMeta>
+                  <p> {post.excerpt} </p>
                   <time> {post.dateFormatted} </time>
                   {post.tags.length > 0 ? (
-                    <small> {post.tags.join(', ')}</small>
+                    <span> {post.tags.join(', ')}</span>
                   ) : (
                     <></>
                   )}

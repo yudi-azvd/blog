@@ -3,27 +3,23 @@ import { createGlobalStyle } from 'styled-components'
 export default createGlobalStyle`
   :root {
     font-size: 16px;
-    --color-fg-default: #c9d1d9;
-    --color-fg-muted: #8b949e;
-    --color-fg-subtle: #484f58;
-    --color-canvas-default: #0d1117;
-    --color-canvas-subtle: #161b22;
-    --color-border-default: #30363d;
-    --color-border-muted: #21262d;
-    --color-neutral-muted: rgba(110,118,129,0.4);
-    --color-accent-fg: #58a6ff;
-    --color-accent-emphasis: #1f6feb;
-    --color-danger-fg: #f85149;
-    --color-header-bg: #161b22;
-    --color-header-text: rgba(240, 246, 252, 0.7);
-    --color-header-logo: #f0f6fc;
+    --color-background: #1a1a1a;
+    --color-background-complementary: #2e2e2e;
+    --color-highlight: #fff;
+    --color-primary: rgba(255, 255, 255, .84);
+    --color-primary: rgba(255, 255, 255, 1);
+    --color-secondary: rgba(255, 255, 255, .6);
+    --color-muted: rgba(255, 255, 255, .5);
+    --color-muted-highlight: rgba(255, 255, 255, .7);
+    --color-code-background: #0e0e0e;
+    --color-code-background-complementary: #2e2e2e;
   }
 
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    outline: 0
+    outline: 0;
   }
 
   html {
@@ -31,9 +27,24 @@ export default createGlobalStyle`
   }
 
   body {
-    background: var(--color-canvas-default);
-    color: var(--color-fg-default);
+    line-height: 1.5;
+    background: var(--color-background);
+    color: var(--color-primary);
     -webkit-font-smoothing: antialiased;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+      margin-right: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-code-background-complementary);
+      border-radius: 10px;
+    }
   }
 
   body, input, button {
@@ -43,6 +54,7 @@ export default createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: bold;
+    color: var(--color-highlight);
   }
 
   h1 {
@@ -62,12 +74,14 @@ export default createGlobalStyle`
   }
 
   a {
-    color: var(--color-accent-fg);
-    text-decoration: none;
+    color: var(--color-secondary);
+    text-decoration: underline;
+    transition: 0.2s;
   }
 
   a:hover {
     text-decoration: underline;
+    color: var(--color-highlight);
   }
 
   ul, li {

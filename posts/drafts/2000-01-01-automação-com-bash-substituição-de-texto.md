@@ -6,7 +6,7 @@ excerpt: 'Automação de edição de texto'
 
 ## SED
 
-`sed /search/replace/`
+`sed s/search/replace/`
 
 ## VSCode
 

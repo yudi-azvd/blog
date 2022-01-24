@@ -14,11 +14,26 @@ export const MarkdownContent = styled.article`
   width: 90%;
   display: flex;
   flex-direction: column;
-  line-height: 1.5;
+
+  p,
+  blockquote,
+  ul,
+  ol,
+  dl,
+  table,
+  pre,
+  details {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
 
   @media (min-width: 650px) {
     & {
       max-width: calc(800px - (30px * 2));
+    }
+
+    h2 {
+      font-size: 1.5rem;
     }
   }
 
@@ -37,6 +52,10 @@ export const MarkdownContent = styled.article`
     margin-bottom: 16px;
   }
 
+  li {
+    list-style: initial;
+  }
+
   li > p {
     margin-top: 16px;
   }
@@ -45,11 +64,72 @@ export const MarkdownContent = styled.article`
     margin-top: 0.25em;
   }
 
+  ul,
+  ol {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  ol[type='1'] {
+    list-style-type: decimal;
+  }
+
+  ol[type='a'] {
+    list-style-type: lower-alpha;
+  }
+
+  ol[type='i'] {
+    list-style-type: lower-roman;
+  }
+
+  div > ol:not([type]) {
+    list-style-type: decimal;
+  }
+
+  ul,
+  ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 2em;
+  }
+
+  ol ol,
+  ul ol {
+    list-style-type: lower-roman;
+  }
+
+  ul ul ol,
+  ul ol ol,
+  ol ul ol,
+  ol ol ol {
+    list-style-type: lower-alpha;
+  }
+
   code {
-    background: var(--color-canvas-subtle);
+    background: var(--color-code-background);
     border-radius: 6px;
     font-size: 95%;
     padding: 0px 0.4em;
+  }
+
+  code,
+  pre {
+    &::-webkit-scrollbar {
+      height: 4px;
+
+      @media (min-width: 650px) {
+        height: 8px;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-code-background-complementary);
+      border-radius: 10px;
+    }
   }
 
   pre code {
@@ -57,7 +137,7 @@ export const MarkdownContent = styled.article`
   }
 
   pre {
-    background: var(--color-canvas-subtle);
+    background: var(--color-code-background);
     overflow: auto;
     padding: 16px 4px;
     border-radius: 6px;
@@ -66,19 +146,12 @@ export const MarkdownContent = styled.article`
     margin-bottom: 16px;
   }
 
-  kbd {
-    display: inline-block;
-    padding: 3px 5px;
-    font: 11px ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
-      Liberation Mono, monospace;
-    line-height: 10px;
-    color: var(--color-fg-default);
-    vertical-align: middle;
-    background-color: var(--color-canvas-subtle);
-    border: solid 1px var(--color-neutral-muted);
-    border-bottom-color: var(--color-neutral-muted);
-    border-radius: 6px;
-    box-shadow: inset 0 -1px 0 var(--color-neutral-muted);
+  pre code:not(.hljs) {
+    padding-left: 0;
+  }
+
+  pre {
+    /* padding-left: 8px; */
   }
 
   a {
@@ -99,8 +172,8 @@ export const MarkdownContent = styled.article`
   blockquote {
     margin: 0;
     padding: 0 1em;
-    color: var(--color-fg-muted);
-    border-left: 0.25em solid var(--color-border-default);
+    color: var(--color-muted);
+    border-left: 0.25em solid var(--color-muted);
   }
 
   h1,
@@ -109,9 +182,84 @@ export const MarkdownContent = styled.article`
   h4,
   h5,
   h6 {
-    margin-top: 24px;
+    margin-top: 36px;
     margin-bottom: 16px;
     line-height: 1.25;
+  }
+
+  h1 tt,
+  h1 code,
+  h2 tt,
+  h2 code,
+  h3 tt,
+  h3 code,
+  h4 tt,
+  h4 code,
+  h5 tt,
+  h5 code,
+  h6 tt,
+  h6 code {
+    padding: 0 0.2em;
+    font-size: inherit;
+  }
+
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+  td,
+  th {
+    padding: 0;
+  }
+
+  table th {
+    font-weight: 600;
+  }
+
+  table th,
+  table td {
+    padding: 6px 13px;
+    border: 1px solid var(--color-muted);
+  }
+
+  table tr {
+    background-color: var(--color-canvas-default);
+    border-top: 1px solid var(--color-border-muted);
+  }
+
+  table tr:nth-child(2n) {
+    background-color: var(--color-background-complementary);
+  }
+
+  table img {
+    background-color: transparent;
+  }
+
+  hr {
+    box-sizing: content-box;
+    overflow: hidden;
+    background: transparent;
+    height: 0.25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: var(--color-background-complementary);
+    border: 0;
+  }
+
+  hr::before {
+    display: table;
+    content: '';
+  }
+
+  hr::after {
+    display: table;
+    clear: both;
+    content: '';
   }
 `
 
@@ -119,7 +267,7 @@ export const PostDetails = styled.div`
   display: block;
   width: 100%;
   height: 100%;
-  color: var(--color-fg-muted);
+  color: var(--color-muted);
   margin-bottom: 16px;
 
   time,
@@ -136,7 +284,6 @@ export const PostDetails = styled.div`
       top: 5%;
       content: '';
       position: absolute;
-      // não sei pq. Tem alguma coisa a ver com a time {margin-right: 4px?
 
       @media (min-width: 650px) {
         & {
@@ -146,8 +293,7 @@ export const PostDetails = styled.div`
 
       width: 1px;
       height: 1em;
-      background: var(--color-fg-muted);
-      color: var(--color-fg-muted);
+      background: var(--color-muted);
     }
   }
 `
