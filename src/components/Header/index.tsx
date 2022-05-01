@@ -29,7 +29,7 @@ export default function Header() {
             {isDevelopmentEnvironment() && (
               <li>
                 <Link href="/drafts">
-                  <a>Drafts</a>
+                  <a>Rascunhos</a>
                 </Link>
               </li>
             )}
