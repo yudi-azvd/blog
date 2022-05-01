@@ -38,6 +38,11 @@ Avaliar é a etapa de simplificar uma expressão matemática em seu resultado.
 Por exemplo, `3 + 3 * 2` tem `9` como resultado. A função responsável por essa
 etapa é `evaluate`.
 
+<!-- O que vem antes parece pertencer a uma seção separada:
+## Funcionamento básico da calculadora -->
+
+<!-- FIXME: sinto que a introdução deveria ser só o que vem logo embaixo -->
+
 Ao implementar essa calculadora, eu me propus a fazer testes unitários para aprender
 boas práticas de programação e ter mais segurança do funcionamento correto das
 funções desenvolvidas. Mal sabia eu que apenas escrever asserções sobre as expectativas
