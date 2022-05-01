@@ -26,8 +26,7 @@ export default function Header() {
               </Link>
             </li>
 
-            {console.log('>>> NODE ENV', process.env.NODE_ENV)}
-            {isDevelopmentEnvironment() && (
+            {(isDevelopmentEnvironment() || process.env.VERCEL_ENV) && (
               <li>
                 <Link href="/drafts">
                   <a>Rascunhos</a>
