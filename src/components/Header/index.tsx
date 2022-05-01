@@ -26,6 +26,7 @@ export default function Header() {
               </Link>
             </li>
 
+            {console.log('>>> NODE ENV', process.env.NODE_ENV)}
             {isDevelopmentEnvironment() && (
               <li>
                 <Link href="/drafts">
