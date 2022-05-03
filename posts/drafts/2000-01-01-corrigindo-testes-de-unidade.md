@@ -19,7 +19,7 @@ description: |
 
 De tempos em tempos, eu volto nesse [projeto](https://github.com/yudi-azvd/c-calculator)
 para ler código, implementar novas funcionalidades ou corrigir bugs. É uma calculadora
-de terminal em C que avalia expressões matemáticas simples. Ela funciona em um
+de terminal em C que avalia expressões matemáticas bem simples. Ela funciona em um
 ciclo executando algumas etapas mais ou menos assim:
 
 1. Ler a entrada do usuário
@@ -30,11 +30,11 @@ ciclo executando algumas etapas mais ou menos assim:
 
 O foco deste post é nas etapas 3 e 4.
 
-Tokenizar, nesse contexto, é separar as partes siginificativas de uma expressão
+**Tokenizar**, nesse contexto, é separar as partes siginificativas de uma expressão
 matemática em tokens como números, operadores e parênteses de abertura e de
 fechamento. Essa etapa é executada pela função `tokenize`.
 
-Avaliar é a etapa de simplificar uma expressão matemática em seu resultado.
+**Avaliar** é a etapa de simplificar uma expressão matemática em seu resultado.
 Por exemplo, `3 + 3 * 2` tem `9` como resultado. A função responsável por essa
 etapa é `evaluate`.
 
@@ -53,8 +53,9 @@ resultando depois em dor de cabeça desnecessária.
 
 ## O teste de "unidade"
 
-Nessa calculadora, existe o arquivo `evaluate.test.cpp` no qual existia o
-seguinte teste:
+Nesse projeto foi usado [doctest](https://github.com/doctest/doctest/) para
+escrever os teste de unidade. Dentre eles, existe o arquivo `evaluate.test.cpp`
+o qual contém o seguinte caso de teste:
 
 ```cpp
 TEST_CASE("evaluate 0", "[evaluate]") {
@@ -80,13 +81,13 @@ primeira vez, minha intenção era que ele fosse um teste de unidade.
 
 <!-- // FIXME: "Se você" duas vezes. Troca isso aí bixo -->
 
-Se você é experiente com testes, você percebeu que esse teste na realidade não
+Se você é experiente com testes, você percebeu que esse teste, na realidade, não
 é um teste de unidade porque ele também depende do funcionamento correto da
-função `tokenize`. Por exemplo, o caso de teste `"3*3-6/2"` resulta na
-[falha do teste](https://github.com/yudi-azvd/c-calculator/issues/2).
+função `tokenize`. Um caso de teste que ilustra isso é o `"3*3-6/2"`, que
+resulta na [falha do teste](https://github.com/yudi-azvd/c-calculator/issues/2).
 
 Fiquei um tempo considerável procurando a origem do erro na função `evaluate`.
-Talvez não seja surpresa para você que está lendo, mas
+Talvez não seja surpresa para você que está lendo agora, mas
 [descobri depois](https://github.com/yudi-azvd/c-calculator/issues/2#issuecomment-1039256295)
 que o erro estava na verdade na função `tokenize`.
 
@@ -94,13 +95,13 @@ que o erro estava na verdade na função `tokenize`.
 
 O ideal é que o sucesso do caso de teste dependa apenas da função sob teste,
 nesse contexto, `evaluate`. Vamos lembrar que essa função precisa de uma lista
-em que cada elemento seja um token para avaliar o resultado da expressão ela
+em que cada elemento seja um token para avaliar o resultado da expressão que ela
 representa.
 
-Precisamos de alguma rotina auxiliar, mais simples que `tokenize`, que transforme
-uma expressão do tipo `"3*3-6/2"` em uma lista de tokens. E precisamos fazer isso
-sem usar a função `tokenize` porque ela faz parte da lógica principal da
-calculadora e deve ser testada em outro lugar.
+Para corrigir o testes, precisamos de alguma rotina auxiliar, mais simples que
+`tokenize`, que transforme uma expressão do tipo `"3*3-6/2"` em uma lista de
+tokens. E precisamos fazer isso sem usar a função `tokenize` porque ela faz parte
+da lógica principal da calculadora e deve ser testada em outro lugar.
 
 <!-- // FIXME: [listar algumas formas de fazer isso?] -->
 
@@ -123,17 +124,25 @@ t_list* create_char_list_from(char* str) {
 }
 ```
 
-`create_char_list_from` cria uma lista ligada de strings a partir de uma string,
-separando os elementos por espaço em branco. Funciona quase igual ao o método `split`
-do
+(A criação dessa função foi uma adaptação desse
+[exemplo](https://www.cplusplus.com/reference/cstring/strtok/))
+
+`create_char_list_from` cria uma lista encadeada de strings a partir de uma string,
+separando os elementos por espaço em branco.
+Na terra do C, a gente tem que implementar algumas coisas por conta própria mesmo.
+Se você usa outra linguagem mais moderna, não se preocupe com essa parte.
+Apenas considere que `create_char_list_from` funciona de forma semelhante ao
+método `split` do
 [Python](https://docs.python.org/3.3/library/stdtypes.html?highlight=split#str.split)
 ou do
 [Java](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-).
-Exemplo: `"3 * ( 8 + 4 ) / 2"`. A criação dessa função foi uma adaptação desse
-[exemplo](https://www.cplusplus.com/reference/cstring/strtok/).
 
+Exemplo de string de entrada: `"3 * ( 8 + 4 ) / 2"`. Essa entrada deve causar o
+retorno de uma lista encadeada com os elementos:
 
-Como ficou depois de reescrever:
+`3, *, (, 8, +, 4, ), /, 2`
+
+Reescrevendo o caso de teste com a função `create_char_list_from` temos o seguinte:
 
 ```cpp
 TEST_CASE("evaluate 0", "[evaluate]") {
@@ -152,36 +161,29 @@ TEST_CASE("evaluate 0", "[evaluate]") {
 
 Antes, o sucesso do caso de teste dependia de duas etapas importantes e
 relativamente complexas do ciclo da calculadora. Depois da correção, ele depende
-de apenas uma etapa da calculadora (a unidade sob teste) e de uma função auxiliar.
+de apenas uma etapa da calculadora (a unidade sob teste) e de uma função auxiliar
+relativamente simples que _não_ faz parte da lógica principal da calculadora.
 
-Mas é realmente um teste de unidade? E a função `create_char_list_from`?
+## Conclusão
 
-Em qualquer linguagem mais moderna, já existiria a implementação de lista ou
-vetor dinâmico. Além disso, provavelmente não seria necessário implementar uma
-função `create_char_list` porque a provavelmente já existiria uma função ou método
-`split`.
-
-
-
-## Conclusão?
-...
+Fica atento na próxima vez que você escrever testes unitários. Independemente se
+se a unidade sob teste for uma classe, método ou função, o seu sucesso deve
+depender apenas de uma unidade.
 
 ### Observações tangentes
 - Não use o código do repositório para entender as funções. No momento em que você
-acessar o link o código provavelmente já mudou. O que está escrito neste post
-deve ser o suficiente para entender o que estou tentado te dizer.
+acessar o link, o código provavelmente já mudou. O que está escrito neste post
+deve ser o suficiente para entender o que estou tentado dizer.
 - Não use os nomes dos testes como eu fiz. Dê nomes descritivos para os seus
 casos de teste.
-- A biblioteca de testes utilizada é [doctest](https://github.com/doctest/doctest/)
-(C++)
-- A função `tokenize` poderia ter sido substituida de outras formas. poderia ter
+- A função `tokenize` poderia ter sido substituida de outras formas. Poderia ter
 substituída por (vale à pena?):
   - uma sequência de chamadas à função `insert(list, data)` com os tokens na ordem
   desejada.
   - uma função variádica do tipo `create_char_list(3, "3", "*", "9")`
   - um função que aceita um array de "strings" `create_char_list(arr_size, {"3", "*", "9"})`
 - A função `evaluate` ainda não é totalmente isolável porque ela utiliza internamente
-a função `to_postfix` que converte uma expressão na forma infixa para pós-fixa.
-Depois dessa conversão é que a avaliação da expressão realmente acontece.
-No futuro, talvez seja melhor separar essas duas funções e renomear `evaluate`
-para `evaluate_postfix_expression`.
+a função `to_postfix` que converte uma expressão na forma
+[infixa para pós-fixa](https://www.cs.man.ac.uk/~pjj/cs212/fix.html#:~:text=Infix%20notation%3A%20X%20%2B%20Y,to%20give%20the%20final%20answer.%22).
+Essa conversão é um pré-requisito para avaliação de uma expressão e, por isso,
+talvez seja interessante separar essas duas funções e testá-las isoladamente.
