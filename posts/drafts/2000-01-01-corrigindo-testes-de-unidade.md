@@ -54,7 +54,7 @@ resultando depois em dor de cabeça desnecessária.
 ## O teste de "unidade"
 
 Nesse projeto foi usado [doctest](https://github.com/doctest/doctest/) para
-escrever os teste de unidade. Dentre eles, existe o arquivo `evaluate.test.cpp`
+escrever os testes de unidade. Dentre eles, existe o arquivo `evaluate.test.cpp`
 o qual contém o seguinte caso de teste:
 
 ```cpp
@@ -72,6 +72,7 @@ TEST_CASE("evaluate 0", "[evaluate]") {
   // ...
 }
 ```
+<!-- // FIXME: Explicar em algum lugar o que esse caso de teste tá testando -->
 
 Baseado no nome do arquivo e no conteúdo do caso de teste, qual é a unidade sob
 teste?
