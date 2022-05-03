@@ -184,6 +184,7 @@ substituída por (vale à pena?):
   - um função que aceita um array de "strings" `create_char_list(arr_size, {"3", "*", "9"})`
 - A função `evaluate` ainda não é totalmente isolável porque ela utiliza internamente
 a função `to_postfix` que converte uma expressão na forma
-[infixa para pós-fixa](https://www.cs.man.ac.uk/~pjj/cs212/fix.html#:~:text=Infix%20notation%3A%20X%20%2B%20Y,to%20give%20the%20final%20answer.%22).
+[infixa](https://en.wikipedia.org/wiki/Infix_notation) para
+[pós-fixa](https://en.wikipedia.org/wiki/Reverse_Polish_notation).
 Essa conversão é um pré-requisito para avaliação de uma expressão e, por isso,
 talvez seja interessante separar essas duas funções e testá-las isoladamente.
