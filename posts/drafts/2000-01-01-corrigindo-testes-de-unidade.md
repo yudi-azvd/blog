@@ -109,11 +109,13 @@ da lógica principal da calculadora e deve ser testada em outro lugar.
 A forma que eu escolhi para fazer isso foi assim:
 
 ```cpp
+// strok modifica o seu primeiro parametro, use com cuidado!
 t_list* create_char_list_from(char* str) {
   t_list* l = create_list("char*");
 
   char* delimeters = " \t\n";
   char* last_token_found = strtok(str, delimeters);
+  // strok modifica o seu primeiro parametro, use com cuidado!
   while (last_token_found != NULL) {
     char* s = calloc(1, strlen(last_token_found)+1);
     strcpy(s, last_token_found);
