@@ -19,8 +19,19 @@ description: |
 
 De tempos em tempos, eu volto nesse [projeto](https://github.com/yudi-azvd/c-calculator)
 para ler código, implementar novas funcionalidades ou corrigir bugs. É uma calculadora
-de terminal em C que avalia expressões matemáticas bem simples. Ela funciona em um
-ciclo executando algumas etapas mais ou menos assim:
+de terminal em C que avalia expressões matemáticas bem simples.
+
+Ao implementar essa calculadora, eu me propus a fazer testes unitários para aprender
+boas práticas de programação e ter mais segurança do funcionamento correto das
+funções desenvolvidas. Mal sabia eu que apenas escrever asserções sobre as expectativas
+de resultados corretos não era o suficiente para escrever bons testes de unidade.
+Um aspecto importante para escrever um bom teste de unidade é ter em mente qual
+é a unidade sob teste. Dessa parte eu sabia, mas não estava convicto, o que acabou
+resultando depois em dor de cabeça desnecessária.
+
+## Funcionamento básico da calculadora
+
+Ela funciona em um ciclo executando algumas etapas mais ou menos assim:
 
 1. Ler a entrada do usuário
 1. Validar e sanitizar
@@ -38,24 +49,11 @@ fechamento. Essa etapa é executada pela função `tokenize`.
 Por exemplo, `3 + 3 * 2` tem `9` como resultado. A função responsável por essa
 etapa é `evaluate`.
 
-<!-- O que vem antes parece pertencer a uma seção separada:
-## Funcionamento básico da calculadora -->
-
-<!-- FIXME: sinto que a introdução deveria ser só o que vem logo embaixo -->
-
-Ao implementar essa calculadora, eu me propus a fazer testes unitários para aprender
-boas práticas de programação e ter mais segurança do funcionamento correto das
-funções desenvolvidas. Mal sabia eu que apenas escrever asserções sobre as expectativas
-de resultados corretos não era o suficiente para escrever bons testes de unidade.
-Um aspecto importante para escrever um bom teste de unidade é ter em mente qual
-é a unidade sob teste. Dessa parte eu sabia, mas não estava convicto, o que acabou
-resultando depois em dor de cabeça desnecessária.
 
 ## O teste de "unidade"
 
-Nesse projeto foi usado [doctest](https://github.com/doctest/doctest/) para
-escrever os testes de unidade. Dentre eles, existe o arquivo `evaluate.test.cpp`
-o qual contém o seguinte caso de teste:
+Nesse projeto foi usado [Catch](https://github.com/catchorg/Catch2) para
+escrever os testes de unidade. Dentre eles, existe o arquivo `evaluate.test.cpp`, que contém o seguinte caso de teste:
 
 ```cpp
 TEST_CASE("evaluate 0", "[evaluate]") {
@@ -69,7 +67,8 @@ TEST_CASE("evaluate 0", "[evaluate]") {
 
   evaluate(list, &result);
   REQUIRE(string(result) == "18.000000");
-  // ...
+  // Tem mais código que que libera memória,
+  // mas será omitido.
 }
 ```
 <!-- // FIXME: Explicar em algum lugar o que esse caso de teste tá testando -->
@@ -99,23 +98,21 @@ nesse contexto, `evaluate`. Vamos lembrar que essa função precisa de uma lista
 em que cada elemento seja um token para avaliar o resultado da expressão que ela
 representa.
 
-Para corrigir o testes, precisamos de alguma rotina auxiliar, mais simples que
+Para corrigir o teste, precisamos de alguma rotina auxiliar, mais simples que
 `tokenize`, que transforme uma expressão do tipo `"3*3-6/2"` em uma lista de
 tokens. E precisamos fazer isso sem usar a função `tokenize` porque ela faz parte
 da lógica principal da calculadora e deve ser testada em outro lugar.
 
-<!-- // FIXME: [listar algumas formas de fazer isso?] -->
-
 A forma que eu escolhi para fazer isso foi assim:
 
 ```cpp
-// strok modifica o seu primeiro parametro, use com cuidado!
+// strok modifica o seu primeiro parâmetro, use com cuidado!
 t_list* create_char_list_from(char* str) {
   t_list* l = create_list("char*");
 
   char* delimeters = " \t\n";
   char* last_token_found = strtok(str, delimeters);
-  // strok modifica o seu primeiro parametro, use com cuidado!
+  // strok modifica o seu primeiro parâmetro, use com cuidado!
   while (last_token_found != NULL) {
     char* s = calloc(1, strlen(last_token_found)+1);
     strcpy(s, last_token_found);
@@ -132,7 +129,7 @@ t_list* create_char_list_from(char* str) {
 
 `create_char_list_from` cria uma lista encadeada de strings a partir de uma string,
 separando os elementos por espaço em branco.
-Na terra do C, a gente tem que implementar algumas coisas por conta própria mesmo.
+Na terra do C, a gente tem que implementar algumas rotinas por conta própria mesmo.
 Se você usa outra linguagem mais moderna, não se preocupe com essa parte.
 Apenas considere que `create_char_list_from` funciona de forma semelhante ao
 método `split` do
@@ -158,7 +155,6 @@ TEST_CASE("evaluate 0", "[evaluate]") {
 
   evaluate(list, &result);
   REQUIRE(string(result) == "18.000000");
-  // ...
 }
 ```
 
