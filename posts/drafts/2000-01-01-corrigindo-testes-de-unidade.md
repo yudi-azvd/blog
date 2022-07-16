@@ -53,7 +53,8 @@ etapa é `evaluate`.
 ## O teste de "unidade"
 
 Nesse projeto foi usado [Catch](https://github.com/catchorg/Catch2) para
-escrever os testes de unidade. Dentre eles, existe o arquivo `evaluate.test.cpp`, que contém o seguinte caso de teste:
+escrever os testes de unidade. Dentre eles, existe o arquivo `evaluate.test.cpp`,
+que contém o seguinte caso de teste:
 
 ```cpp
 TEST_CASE("evaluate 0", "[evaluate]") {
@@ -68,7 +69,7 @@ TEST_CASE("evaluate 0", "[evaluate]") {
   evaluate(list, &result);
   REQUIRE(string(result) == "18.000000");
   // Tem mais código que que libera memória,
-  // mas será omitido.
+  // mas será omitido daqui pra frente.
 }
 ```
 <!-- // FIXME: Explicar em algum lugar o que esse caso de teste tá testando -->
@@ -76,15 +77,15 @@ TEST_CASE("evaluate 0", "[evaluate]") {
 Baseado no nome do arquivo e no conteúdo do caso de teste, qual é a unidade sob
 teste?
 
-Se você respondeu `evaluate`, acertou. Na época que eu escrevi esse teste pela
-primeira vez, minha intenção era que ele fosse um teste de unidade.
-
-<!-- // FIXME: "Se você" duas vezes. Troca isso aí bixo -->
+Se sua repostas foi `evaluate`, você acertou. Na época que eu escrevi esse teste
+pela primeira vez, minha intenção era que ele fosse um teste de unidade.
 
 Se você é experiente com testes, você percebeu que esse teste, na realidade, não
 é um teste de unidade porque ele também depende do funcionamento correto da
 função `tokenize`. Um caso de teste que ilustra isso é o `"3*3-6/2"`, que
 resulta na [falha do teste](https://github.com/yudi-azvd/c-calculator/issues/2).
+<!-- ^ Aqui eu devia ter dito qual o resultado errado que a função retornava.
+Esse link pra issue é realmente necessário? -->
 
 Fiquei um tempo considerável procurando a origem do erro na função `evaluate`.
 Talvez não seja surpresa para você que está lendo agora, mas
@@ -165,25 +166,21 @@ relativamente simples que _não_ faz parte da lógica principal da calculadora.
 
 ## Conclusão
 
-Fica atento na próxima vez que você escrever testes unitários. Independemente se
-se a unidade sob teste for uma classe, método ou função, o seu sucesso deve
-depender apenas de uma unidade.
+Não deixe a preguiça atingir você, pense um pouco sobre como você está escrevendo
+seus testes. Independemente se a unidade sob teste for uma classe, método ou função, o seu sucesso deve depender apenas dessa unidade.
 
 ### Observações tangentes
+- É comum adotar um padrão para o nome da unidade sob teste. Geralmente o nome
+é `sut` (system under test). Se um padrão é adotado, encontrar a unidade
+sob teste em _qualquer_ suite de testes fica muito mais fácil.
 - Não use o código do repositório para entender as funções. No momento em que você
 acessar o link, o código provavelmente já mudou. O que está escrito neste post
 deve ser o suficiente para entender o que estou tentado dizer.
-- Não use os nomes dos testes como eu fiz. Dê nomes descritivos para os seus
-casos de teste.
-- A função `tokenize` poderia ter sido substituida de outras formas. Poderia ter
-substituída por (vale à pena?):
-  - uma sequência de chamadas à função `insert(list, data)` com os tokens na ordem
-  desejada.
-  - uma função variádica do tipo `create_char_list(3, "3", "*", "9")`
-  - um função que aceita um array de "strings" `create_char_list(arr_size, {"3", "*", "9"})`
+- Não use os nomes dos testes como eu fiz. Eu era jovem e preguiçoso. Dê nomes
+descritivos para os seus casos de teste.
 - A função `evaluate` ainda não é totalmente isolável porque ela utiliza internamente
 a função `to_postfix` que converte uma expressão na forma
 [infixa](https://en.wikipedia.org/wiki/Infix_notation) para
-[pós-fixa](https://en.wikipedia.org/wiki/Reverse_Polish_notation).
-Essa conversão é um pré-requisito para avaliação de uma expressão e, por isso,
-talvez seja interessante separar essas duas funções e testá-las isoladamente.
+[pós-fixa](https://en.wikipedia.org/wiki/Reverse_Polish_notation). Essa conversão
+é um pré-requisito para avaliação de uma expressão e, por isso, talvez seja
+interessante separar essas duas funções e testá-las isoladamente.
