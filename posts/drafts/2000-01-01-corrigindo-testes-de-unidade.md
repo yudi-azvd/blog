@@ -107,13 +107,12 @@ da lógica principal da calculadora e deve ser testada em outro lugar.
 A forma que eu escolhi para fazer isso foi assim:
 
 ```cpp
-// strok modifica o seu primeiro parâmetro, use com cuidado!
 t_list* create_char_list_from(char* str) {
   t_list* l = create_list("char*");
 
   char* delimeters = " \t\n";
   char* last_token_found = strtok(str, delimeters);
-  // strok modifica o seu primeiro parâmetro, use com cuidado!
+  // strtok modifica o seu primeiro parâmetro, use com cuidado!
   while (last_token_found != NULL) {
     char* s = calloc(1, strlen(last_token_found)+1);
     strcpy(s, last_token_found);
@@ -167,17 +166,20 @@ relativamente simples que _não_ faz parte da lógica principal da calculadora.
 ## Conclusão
 
 Não deixe a preguiça atingir você, pense um pouco sobre como você está escrevendo
-seus testes. Independemente se a unidade sob teste for uma classe, método ou função, o seu sucesso deve depender apenas dessa unidade.
+seus testes. Independemente se a unidade sob teste for uma classe, método ou
+função, o seu sucesso deve depender apenas dessa unidade.
 
 ### Observações tangentes
-- É comum adotar um padrão para o nome da unidade sob teste. Geralmente o nome
-é `sut` (system under test). Se um padrão é adotado, encontrar a unidade
-sob teste em _qualquer_ suite de testes fica muito mais fácil.
+- Escrevendo esse post eu percebi que havia um bug em `create_char_list_from`.
+Por isso, vale reforçar que é importante testar as funções auxiliares que você
+escreve.
 - Não use o código do repositório para entender as funções. No momento em que você
 acessar o link, o código provavelmente já mudou. O que está escrito neste post
 deve ser o suficiente para entender o que estou tentado dizer.
 - Não use os nomes dos testes como eu fiz. Eu era jovem e preguiçoso. Dê nomes
-descritivos para os seus casos de teste.
+descritivos para os seus casos de teste. Assista esse
+[trecho](https://youtu.be/MWsk1h8pv2Q?t=892) para ter uma ideia de como escolher
+bons nomes.
 - A função `evaluate` ainda não é totalmente isolável porque ela utiliza internamente
 a função `to_postfix` que converte uma expressão na forma
 [infixa](https://en.wikipedia.org/wiki/Infix_notation) para
