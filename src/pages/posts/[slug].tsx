@@ -72,6 +72,7 @@ export default function PostPage({ post }: PostProps) {
           <GoBack />
 
           <h1> {post.title} </h1>
+
           <PostDetails>
             <time> {post.dateFormatted} </time>
             {post.tags.length > 0 ? (
@@ -81,7 +82,7 @@ export default function PostPage({ post }: PostProps) {
             )}
           </PostDetails>
 
-          <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
+          <main dangerouslySetInnerHTML={{ __html: post.content || '' }} />
 
           <GoBack />
         </MarkdownContent>

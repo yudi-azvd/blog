@@ -20,8 +20,8 @@ filenames = filenames.map((fn) =>
 )
 const drafts = filenames.filter((fn) => fn.indexOf('drafts/') > -1)
 
-// if (process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV !== 'TRUE')
-filenames = filenames.filter((fn) => !fn.includes('drafts/'))
+if (process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV !== 'TRUE')
+  filenames = filenames.filter((fn) => !fn.includes('drafts/'))
 
 if (!isDevelopmentEnvironment())
   filenames = filenames.filter((fn) => !fn.includes('tests/'))

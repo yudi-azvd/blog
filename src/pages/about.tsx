@@ -26,8 +26,10 @@ export default function About() {
               <a href="https://github.com/yudi-azvd/blog/issues/new">aqui</a> .
             </p>
             <p>
-              <a href="https://github.com/yudi-azvd/blog">Repositório</a> desse
-              blog no GitHub, feito por{' '}
+              Esse blog foi feito com <a href="https://nextjs.org/">Next.js</a>{' '}
+              e o código fonte está hospedado nesse{' '}
+              <a href="https://github.com/yudi-azvd/blog">repositório</a> do
+              GitHub. Feito por{' '}
               <a href="https://github.com/yudi-azvd">Yudi Yamane</a>.
             </p>
           </div>
